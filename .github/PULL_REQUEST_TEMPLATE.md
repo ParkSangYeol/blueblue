@@ -1,6 +1,6 @@
-- 제목 : feat: 기능명
-  ex) feat: pull request template 작성
-  *** 확인 후 1~3번 라인은 지워주세요 ***
+제목 : feat: 기능명
+> (ex- feat: pull request template 작성)
+> 확인 후 지워주세요
 
 ## 🖥️Part
 Design/Programmer/Designer
