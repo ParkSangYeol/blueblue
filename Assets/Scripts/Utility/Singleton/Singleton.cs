@@ -37,7 +37,6 @@ namespace com.kleberswf.lib.core {
 		}
 
 		private static void CreateInstance() {
-			if (Destroyed) return;
 			var type = typeof (T);
 			var objects = FindObjectsOfType<T>();
 			if (objects.Length > 0) {
@@ -49,7 +48,6 @@ namespace com.kleberswf.lib.core {
 				_instance = objects[0];
 				_instance.gameObject.SetActive(true);
 				Instantiated = true;
-				Destroyed = false;
 				return;
 			}
 
@@ -72,12 +70,10 @@ namespace com.kleberswf.lib.core {
 			if (_instance == null)
 				_instance = gameObject.GetComponent<T>() ?? gameObject.AddComponent<T>();
 			Instantiated = true;
-			Destroyed = false;
 		}
 
 		public bool Persistent;
 		public static bool Instantiated { get; private set; }
-		public static bool Destroyed { get; private set; }
 
 		protected virtual void Awake() {
 			if (_instance == null) {
@@ -92,7 +88,6 @@ namespace com.kleberswf.lib.core {
 		}
 
 		private void OnDestroy() {
-			Destroyed = true;
 			Instantiated = false;
 		}
 
