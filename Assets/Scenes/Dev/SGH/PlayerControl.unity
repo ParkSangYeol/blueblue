@@ -1797,7 +1797,7 @@ MonoBehaviour:
     SerializationNodes: []
   playerHead: {fileID: 1672480860}
   mouseSensitivity: 100
-  mouse_Up_Down_Restrict: {x: -90, y: 60}
+  mouse_Up_Down_Restrict: {x: -90, y: 50}
 --- !u!1 &1403612326
 GameObject:
   m_ObjectHideFlags: 0
