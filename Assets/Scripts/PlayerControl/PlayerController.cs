@@ -16,6 +16,9 @@ namespace PlayerControl {
         [Title("Ground Layer")]
         [InfoBox("잘 넣어주세요")]
         public LayerMask ground;
+        [Title("측면 판단 기준 각도")]
+        [InfoBox("플레이어와 발판이 충돌했을 때 그 충돌 각도와 vector.up간의 각도를 비교하기 위해서 사용")]
+        public float groundCheckAngle = 45f;
         [Title("Animator")]
         public Animator animator;
 
@@ -40,7 +43,7 @@ namespace PlayerControl {
 
             //ground check
             RaycastHit groundCheck;
-            if (Physics.Raycast(transform.position, Vector3.down, out groundCheck, _height, ground))
+            if (Physics.Raycast(transform.position, Vector3.down, out groundCheck, _height, ground) && Vector3.Angle(groundCheck.normal, Vector3.up) < groundCheckAngle)//측면 충돌 체크(하강 중 옆으로 발판과 부딫힘)
             {
                 isGround = true;
             }
