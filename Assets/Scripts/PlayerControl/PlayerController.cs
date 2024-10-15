@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using Unity.Burst.CompilerServices;
 
 namespace PlayerControl {
     public class PlayerController : SerializedMonoBehaviour
@@ -17,22 +18,31 @@ namespace PlayerControl {
         [InfoBox("잘 넣어주세요")]
         public LayerMask ground;
         [Title("측면 판단 기준 각도")]
-        [InfoBox("플레이어와 발판이 충돌했을 때 그 충돌 각도와 vector.up간의 각도를 비교하기 위해서 사용")]
+        [InfoBox("플레이어가 서있을 수 있는 발판의 최대 각도")]
         public float groundCheckAngle = 45f;
         [Title("Animator")]
         public Animator animator;
 
-        private Rigidbody rb;
+        //private Rigidbody rb;
+        private CharacterController controller;
         private bool isGround = false;
+        private bool overGroundAngle = false;
 
         private float _height;
         private float inputRL;
         private float inputFB;
+
+        private Vector3 normalVector = Vector3.up;
+        private Vector3 velocity;
+
         private void Start()
         {
-            rb = GetComponent<Rigidbody>();
+            //rb = GetComponent<Rigidbody>();
+            controller = GetComponent<CharacterController>();
             animator = GetComponent<Animator>();
-            _height = GetComponent<CapsuleCollider>().height / 2 + 0.05f;
+            //_height = GetComponent<CapsuleCollider>().height / 2 + 0.05f;
+            _height = controller.height/2 + 0.05f;
+            controller.slopeLimit = groundCheckAngle;
         }
 
         private void Update()
@@ -43,24 +53,37 @@ namespace PlayerControl {
 
             //ground check
             RaycastHit groundCheck;
-            if (Physics.Raycast(transform.position, Vector3.down, out groundCheck, _height, ground) && Vector3.Angle(groundCheck.normal, Vector3.up) < groundCheckAngle)//측면 충돌 체크(하강 중 옆으로 발판과 부딫힘)
+            if (Physics.Raycast(transform.position, Vector3.down, out groundCheck, _height, ground))
             {
-                isGround = true;
+                normalVector = groundCheck.normal;//경사가 있는 발판이라면 경사의 법선 벡터 기록
+                float angleCheck = Vector3.Angle(normalVector, Vector3.up);
+                if (angleCheck < groundCheckAngle)
+                {
+                    isGround = true;
+                    overGroundAngle = false;
+                }
+                else
+                {
+                    isGround = false;
+                    overGroundAngle = true;
+                }
             }
             else
             {
                 isGround = false;
+                overGroundAngle = false;
             }
 
             if(isGround && Input.GetKeyDown(KeyCode.Space))
             {
                 //jump
                 //rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
-                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                //rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                velocity.y = jumpForce;
             }
             //animation
             animator.SetFloat("Speed", Mathf.Abs(inputFB) + Mathf.Abs(inputRL));
-            animator.SetFloat("VelocityY", rb.velocity.y);
+            animator.SetFloat("VelocityY", velocity.y);
             animator.SetBool("IsJumping", !isGround);
         }
 
@@ -70,17 +93,27 @@ namespace PlayerControl {
             //walk
             Vector3 movement = new Vector3(inputRL, 0, inputFB).normalized;
             movement = transform.TransformDirection(movement);
-            if (isGround)
-            {
+            if (isGround && !overGroundAngle)// true,false
+            {                
                 movement *= moveSpeed;
-
+                velocity = new Vector3(movement.x, velocity.y, movement.z);
+            }
+            else if(!isGround && !overGroundAngle)// false,false
+            {
+                movement *= atAirSpeed;
+                velocity = new Vector3(movement.x, velocity.y, movement.z);
             }
             else
             {
-                movement *= atAirSpeed;
+                float angle = Vector3.Angle(normalVector, Vector3.up);
+                Vector3 slopeDirection = Vector3.ProjectOnPlane(Vector3.down, normalVector).normalized;
+                velocity += slopeDirection * Physics.gravity.magnitude * Time.fixedDeltaTime;
             }
             //rb.AddForce(movement, ForceMode.Acceleration);
-            rb.velocity = new Vector3(movement.x, rb.velocity.y, movement.z);
+            //rb.velocity = new Vector3(movement.x, rb.velocity.y, movement.z);
+            velocity.y += Physics.gravity.y * Time.deltaTime;
+            controller.Move(velocity * Time.deltaTime);
+            if (isGround && velocity.y < 0) velocity.y = -3f;
         }
     } 
 }

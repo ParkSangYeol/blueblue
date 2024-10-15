@@ -10,7 +10,7 @@ namespace PlayerControl
         [Title("이 코드는 카메라에 달아주세요.")]
         [DetailedInfoBox("카메라가 기생할 몸체", "몸에다 달지 말고, 캐릭터의 눈 부분에 연결하세요.")]
         public Transform playerHead;
-        private Rigidbody rb;
+        //private Rigidbody rb;
         [InfoBox("마우스 감도")]
         public float mouseSensitivity = 100f;
         private float xRotation = 0f;
@@ -21,7 +21,7 @@ namespace PlayerControl
         void Start()
         {
             Cursor.lockState = CursorLockMode.Locked;
-            rb = playerHead.GetComponent<Rigidbody>();
+            //rb = playerHead.GetComponent<Rigidbody>();
         }
 
         void Update()
@@ -35,8 +35,10 @@ namespace PlayerControl
             transform.localRotation = Quaternion.Euler(xRotation, 0f,0f);
             //playerHead.Rotate(Vector3.up * mouseX);
             // 캐릭터에 rigidbody랑 충돌이 있어서 발생한 문제
-            Quaternion yRotation = Quaternion.Euler(0f, mouseX, 0f);
-            rb.MoveRotation(rb.rotation * yRotation);
+
+            //Quaternion yRotation = Quaternion.Euler(0f, mouseX, 0f);
+            //rb.MoveRotation(rb.rotation * yRotation);
+            playerHead.Rotate(Vector3.up * mouseX);
         }
     }
 }
