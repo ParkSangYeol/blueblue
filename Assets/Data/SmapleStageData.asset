@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70662be3833116f428d5a880e3648e2d, type: 3}
+  m_Name: SmapleStageData
+  m_EditorClassIdentifier: 
+  stageName: "\uC0D8\uD50C"
+  type: 0
+  defaultPrefab: {fileID: 8241887383551660762, guid: 99f8fe26392c4a64ba4ff2c08db496ae,
+    type: 3}
+  problems:
+  - {fileID: 11400000, guid: 1128d893375b59d429ebe7f624b4840f, type: 2}
+  - {fileID: 11400000, guid: 50ff4e0e927e05a45b03f3142283aa72, type: 2}
+  - {fileID: 11400000, guid: 26cc10082f1f79541b09e44cc8911229, type: 2}
