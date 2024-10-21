@@ -1,0 +1,19 @@
+Pack of low-poly toys:
+Duck  (1024*1024px)
+Pegtop (1024*1024px)
+Xylophone (with separate stick) (1024*1024px)
+Cubes (7 separate objects with A-Z, 0-9 symbols) (1024*1024px)
+Train (4 separate parts)(1024*1024px)
+Drum (with separate stick) (1024*1024px)
+Hand drum (1024*1024px)
+Sorting cube (16 separate objects)(1024*1024px)
+Stackers (1024*1024px)
+Toy house (2048*2048px)
+Bear (1024*1024px)
+Plane (1024*1024px)
+Materials contain 3 textures: diffuse (Albedo), normal map, metallic texture (with adjusted smoothness)
+All textures are applied and adjusted.
+All meshes are fitted to Unity measurement system.
+Update: New prefabs/materials/textures contained in "New" folders.
+	***How to use***
+Just drag and drop desired object from "Prefabs" folder into the scene view or hierarchy window. If necessary, add needed components, like rigidbody or collider.
