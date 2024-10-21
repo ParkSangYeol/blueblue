@@ -4,11 +4,12 @@ using UnityEngine;
 
 namespace Problem
 {
+    [System.Flags]
     public enum ProblemType
     {
-        BABYHOOD,
-        CHILDHOOD,
-        ADOLESCENCE,
-        OLD_AGE
+        BABYHOOD = 1 << 1,
+        CHILDHOOD= 1 << 2,
+        ADOLESCENCE = 1 << 3,
+        OLD_AGE = 1 << 4
     }
 }
