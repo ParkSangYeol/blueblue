@@ -9632,6 +9632,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 588818616390345965, guid: d8aa47eb051537e4db8936f462df99ac,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 987944981435676390, guid: d8aa47eb051537e4db8936f462df99ac,
         type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -9687,6 +9692,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1869446421357016501, guid: d8aa47eb051537e4db8936f462df99ac,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1916922979239309641, guid: d8aa47eb051537e4db8936f462df99ac,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3317557207510674119, guid: d8aa47eb051537e4db8936f462df99ac,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3568184396283974469, guid: d8aa47eb051537e4db8936f462df99ac,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4503250617565923341, guid: d8aa47eb051537e4db8936f462df99ac,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4761531341779174446, guid: d8aa47eb051537e4db8936f462df99ac,
         type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -9696,6 +9726,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6269952331931581899, guid: d8aa47eb051537e4db8936f462df99ac,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324938787117626313, guid: d8aa47eb051537e4db8936f462df99ac,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7136095841892199931, guid: d8aa47eb051537e4db8936f462df99ac,
         type: 3}
