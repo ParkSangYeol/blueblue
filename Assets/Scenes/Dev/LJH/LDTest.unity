@@ -421,6 +421,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 276261521564371926, guid: 99f8fe26392c4a64ba4ff2c08db496ae,
+        type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 662955977594263833, guid: 99f8fe26392c4a64ba4ff2c08db496ae,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -476,10 +481,35 @@ PrefabInstance:
       propertyPath: m_Convex
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1729831202913926991, guid: 99f8fe26392c4a64ba4ff2c08db496ae,
+        type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411522021236565104, guid: 99f8fe26392c4a64ba4ff2c08db496ae,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664692806032034938, guid: 99f8fe26392c4a64ba4ff2c08db496ae,
+        type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8007052899247992146, guid: 99f8fe26392c4a64ba4ff2c08db496ae,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8241887383551660762, guid: 99f8fe26392c4a64ba4ff2c08db496ae,
         type: 3}
       propertyPath: m_Name
       value: DefaultMap
+      objectReference: {fileID: 0}
+    - target: {fileID: 8908765555635349734, guid: 99f8fe26392c4a64ba4ff2c08db496ae,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -555,6 +585,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3058993463318156768, guid: afb0a3a957a8b5744a1f85ac294aa8a2,
         type: 3}
+    - target: {fileID: 3266408321207043600, guid: afb0a3a957a8b5744a1f85ac294aa8a2,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 3266408321207043600, guid: afb0a3a957a8b5744a1f85ac294aa8a2,
         type: 3}
       propertyPath: groundCheckAngle
