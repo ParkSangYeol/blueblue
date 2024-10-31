@@ -98,6 +98,8 @@ public class FirstPersonController : MonoBehaviour
     public KeyCode jumpKey = KeyCode.Space;
     public float jumpPower = 5f;
 
+    public float rayLength = .75f;
+    
     // Internal Variables
     private bool isGrounded = false;
 
@@ -446,7 +448,7 @@ public class FirstPersonController : MonoBehaviour
     {
         Vector3 origin = new Vector3(transform.position.x, transform.position.y - (transform.localScale.y * .5f), transform.position.z);
         Vector3 direction = transform.TransformDirection(Vector3.down);
-        float distance = .75f;
+        float distance = rayLength;
 
         if (Physics.Raycast(origin, direction, out RaycastHit hit, distance))
         {
@@ -617,7 +619,7 @@ public class FirstPersonController : MonoBehaviour
         fpc.playerCanMove = EditorGUILayout.ToggleLeft(new GUIContent("Enable Player Movement", "Determines if the player is allowed to move."), fpc.playerCanMove);
 
         GUI.enabled = fpc.playerCanMove;
-        fpc.walkSpeed = EditorGUILayout.Slider(new GUIContent("Walk Speed", "Determines how fast the player will move while walking."), fpc.walkSpeed, .1f, fpc.sprintSpeed);
+        fpc.walkSpeed = EditorGUILayout.Slider(new GUIContent("Walk Speed", "Determines how fast the player will move while walking."), fpc.walkSpeed, .1f, 100f);
         GUI.enabled = true;
 
         EditorGUILayout.Space();
@@ -686,7 +688,8 @@ public class FirstPersonController : MonoBehaviour
 
         GUI.enabled = fpc.enableJump;
         fpc.jumpKey = (KeyCode)EditorGUILayout.EnumPopup(new GUIContent("Jump Key", "Determines what key is used to jump."), fpc.jumpKey);
-        fpc.jumpPower = EditorGUILayout.Slider(new GUIContent("Jump Power", "Determines how high the player will jump."), fpc.jumpPower, .1f, 20f);
+        fpc.jumpPower = EditorGUILayout.Slider(new GUIContent("Jump Power", "Determines how high the player will jump."), fpc.jumpPower, .1f, 200f);
+        fpc.rayLength = EditorGUILayout.Slider(new GUIContent("Jump Ray Length", "레이 길이"), fpc.rayLength, .75f, 200f);
         GUI.enabled = true;
 
         EditorGUILayout.Space();
