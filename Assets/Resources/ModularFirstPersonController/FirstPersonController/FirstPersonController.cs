@@ -466,7 +466,8 @@ public class FirstPersonController : MonoBehaviour
         // Adds force to the player rigidbody to jump
         if (isGrounded)
         {
-            rb.AddForce(0f, jumpPower, 0f, ForceMode.Impulse);
+            Vector3 normalVec = rb.velocity.normalized;
+            rb.AddForce(0f, jumpPower * (1 - normalVec.y), 0f, ForceMode.Impulse);
             isGrounded = false;
         }
 
