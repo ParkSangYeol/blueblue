@@ -61,7 +61,7 @@ PrefabInstance:
     - target: {fileID: 8241887383551660762, guid: 99f8fe26392c4a64ba4ff2c08db496ae,
         type: 3}
       propertyPath: m_Name
-      value: RainCloudProblem Variant
+      value: RainCloudProblemProblem
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -114,6 +114,16 @@ PrefabInstance:
         type: 3}
       propertyPath: lengthInSec
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1179868155115663626, guid: 12b4377d8b1f3eb4baf1fb81a7b6022c,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1179868155115663626, guid: 12b4377d8b1f3eb4baf1fb81a7b6022c,
+        type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 1179868155115663626, guid: 12b4377d8b1f3eb4baf1fb81a7b6022c,
         type: 3}
