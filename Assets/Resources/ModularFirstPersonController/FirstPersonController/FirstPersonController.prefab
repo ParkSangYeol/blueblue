@@ -94,7 +94,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4459864850019384750}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: c091cf941f800ba41ba41fed65a1e565, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -183,7 +183,7 @@ MonoBehaviour:
   sprintBarHeightPercent: 0.02
   enableJump: 1
   jumpKey: 32
-  jumpPower: 5
+  jumpPower: 4
   rayLength: 0.75
   enableCrouch: 0
   holdToCrouch: 1
