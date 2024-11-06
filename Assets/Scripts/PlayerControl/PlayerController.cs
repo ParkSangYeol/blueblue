@@ -28,6 +28,9 @@ namespace PlayerControl {
         public float groundCheckAngle = 45f;
         [Title("Animator")]
         public Animator animator;
+        [Title("GroundRay")]
+        [InfoBox("바닥을 판정하기 위해 쏘는 레이의 길이(0.2f 기준 scale 0.5 ~ 1.0에서 정상적으로 작동함")]
+        public float groundRay = 0.2f;
 
         //private Rigidbody rb;
         private CharacterController controller;
@@ -41,6 +44,8 @@ namespace PlayerControl {
         private Vector3 normalVector = Vector3.up;
         private Vector3 velocity;
 
+        private float sphereRadius = 0.1f;
+
         private void Start()
         {
             //rb = GetComponent<Rigidbody>();
@@ -49,7 +54,7 @@ namespace PlayerControl {
             //_height = GetComponent<CapsuleCollider>().height / 2 + 0.05f;
             _height = controller.height/2 + 0.03f;
             controller.slopeLimit = groundCheckAngle;
-            controller.isTrigger = true;
+            sphereRadius *= transform.localScale.y;
         }
 
         private void Update()
@@ -60,8 +65,9 @@ namespace PlayerControl {
 
             //ground check
             RaycastHit groundCheck;
-            Vector3 rayPos = transform.position + Vector3.down * 0.05f;
-            if (Physics.Raycast(rayPos, Vector3.down, out groundCheck, _height, ground))
+            //Vector3 rayPos = transform.position + Vector3.up*_height;
+            //Debug.DrawRay(transform.position, Vector3.down*groundRay, Color.red);
+            if (Physics.SphereCast(transform.position, sphereRadius, Vector3.down, out groundCheck, groundRay, ground))
             {
                 normalVector = groundCheck.normal;//경사가 있는 발판이라면 경사의 법선 벡터 기록
                 float angleCheck = Vector3.Angle(normalVector, Vector3.up);
