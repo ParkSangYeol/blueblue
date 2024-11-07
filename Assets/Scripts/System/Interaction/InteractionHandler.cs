@@ -86,7 +86,7 @@ namespace System.Interaction
                 return;
             }
             
-            StartInteract();
+            currentInteractable.StartInteract();
             onStartInteracting.Invoke();
         }
         
