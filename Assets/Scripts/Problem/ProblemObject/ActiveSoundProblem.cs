@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Problem.Object
 {
-    public class SchoolBellProblem : ProblemObject
+    public class ActiveSoundProblem : ProblemObject
     {
         [SerializeField] 
         private AudioClip audioClip;
