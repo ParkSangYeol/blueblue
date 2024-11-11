@@ -66,7 +66,7 @@ namespace PlayerControl {
             //ground check
             RaycastHit groundCheck;
             //Vector3 rayPos = transform.position + Vector3.up*_height;
-            //Debug.DrawRay(transform.position, Vector3.down*groundRay, Color.red);
+            Debug.DrawRay(transform.position, Vector3.down*groundRay, Color.red);
             if (Physics.SphereCast(transform.position, sphereRadius, Vector3.down, out groundCheck, groundRay, ground))
             {
                 normalVector = groundCheck.normal;//경사가 있는 발판이라면 경사의 법선 벡터 기록
