@@ -97,7 +97,7 @@ namespace Problem.Object
             jumpScareDuck.transform.position = playerTransform.position + new Vector3(0, 2f, 0) + playerTransform.forward * 0.26f;
             jumpScareDuck.transform.rotation = mainCamera.transform.rotation;
             // jumpScareDuck.transform.rotation = new Quaternion(0f, jumpScareDuck.transform.rotation.y, 0f, 1f);
-            jumpScareDuck.transform.Rotate(345,180,0,Space.Self);
+            jumpScareDuck.transform.Rotate(0,180,0,Space.Self);
             yield return null;
             // 점프스케어 연출 진행
             jumpScareSequence = DOTween.Sequence();
@@ -106,8 +106,9 @@ namespace Problem.Object
                 .Append(jumpScareDuck.transform
                     .DOMoveY(mainCamera.transform.position.y - 0.17f, 0.5f).SetEase(Ease.OutExpo))
                 .Append(jumpScareDuck.transform
-                    .DORotateQuaternion(playerTransform.rotation * Quaternion.Euler(15, 180, 0), 0.3f)
-                    .SetDelay(1f));
+                    .DORotateQuaternion(playerTransform.rotation * Quaternion.Euler(15, 180, 0), 0.1f)
+                    .SetDelay(1f)
+                    );
             // TODO 카메라 흔들림 연출. 현재 CineMachine Brain을 사용해 DOTween 연출이 안먹음. 
             // SFX 출력
             SoundManager.Instance.PlaySFX(sfxPlayer, screamSFX, false);
