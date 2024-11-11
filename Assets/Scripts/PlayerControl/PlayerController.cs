@@ -10,6 +10,8 @@ namespace PlayerControl {
         [Title("이동 관련 변수")]
         [InfoBox("걷는 속도")]
         public float moveSpeed = 5f;
+        [InfoBox("감속 변수: 멈췄을 때 관성이 줄어들도록")]
+        public float deceleration = 8f;
         [DetailedInfoBox("공중 이동시 속도", "Jump 상태에서 WASD사용시 각 방향으로 움직이는 속도")]
         public float atAirSpeed = 3;
         [InfoBox("점프시 가해지는 힘")]
@@ -52,7 +54,7 @@ namespace PlayerControl {
             controller = GetComponent<CharacterController>();
             animator = GetComponent<Animator>();
             //_height = GetComponent<CapsuleCollider>().height / 2 + 0.05f;
-            _height = controller.height/2 + 0.03f;
+            _height = controller.height*transform.localScale.y;
             controller.slopeLimit = groundCheckAngle;
             sphereRadius *= transform.localScale.y;
         }
@@ -60,13 +62,14 @@ namespace PlayerControl {
         private void Update()
         {
             // WASD로 입력을 받아오고
-            inputRL = Input.GetAxis("Horizontal"); // Right - Left (A - D)
-            inputFB = Input.GetAxis("Vertical"); // Front - Back (W - S)
+            inputRL = Input.GetAxisRaw("Horizontal"); // Right - Left (A - D)
+            inputFB = Input.GetAxisRaw("Vertical"); // Front - Back (W - S)
 
             //ground check
             RaycastHit groundCheck;
             //Vector3 rayPos = transform.position + Vector3.up*_height;
             Debug.DrawRay(transform.position, Vector3.down*groundRay, Color.red);
+            Debug.DrawRay(transform.position + Vector3.up * _height, Vector3.up * groundRay, Color.blue);
             if (Physics.SphereCast(transform.position, sphereRadius, Vector3.down, out groundCheck, groundRay, ground))
             {
                 normalVector = groundCheck.normal;//경사가 있는 발판이라면 경사의 법선 벡터 기록
@@ -89,15 +92,14 @@ namespace PlayerControl {
             }
 
             //RaycastHit ceilingCheck;
-            //Vector3 fRayPos = transform.position + Vector3.up * 0.05f;
-            //if (Physics.Raycast(fRayPos, Vector3.up, out ceilingCheck, _height, ground))
+            //if (Physics.Raycast(transform.position + Vector3.up * _height, Vector3.up, out ceilingCheck, groundRay/2, ground))
             //{
             //    Debug.Log("Ceiling");
             //    isGround = false;
             //    velocity.y = highestFallSpeed;
             //}
 
-                if (isGround && Input.GetKeyDown(KeyCode.Space))
+            if (isGround && Input.GetKeyDown(KeyCode.Space))
             {
                 //jump
                 //rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
@@ -135,13 +137,20 @@ namespace PlayerControl {
             }
             //rb.AddForce(movement, ForceMode.Acceleration);
             //rb.velocity = new Vector3(movement.x, rb.velocity.y, movement.z);
+
+            if (inputRL == 0 && inputFB == 0 && isGround)
+            {
+                velocity.x = 0;
+                velocity.z = 0;
+            }
+
             velocity.y += Physics.gravity.y * Time.deltaTime * fallSpeedFilter;
             controller.Move(velocity * Time.deltaTime);
             if (isGround && velocity.y < 0) velocity.y = highestFallSpeed;
         }
         private void OnControllerColliderHit(ControllerColliderHit hit)
         {
-            if (hit.collider.CompareTag(groundTagName))
+            if (hit.collider.CompareTag(groundTagName) && velocity.y > 0)
             {
                 velocity.y = 0;
             }
