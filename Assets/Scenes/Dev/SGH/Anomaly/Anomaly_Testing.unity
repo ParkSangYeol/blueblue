@@ -181,7 +181,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-<<<<<<< Updated upstream
 <<<<<<< HEAD
     - target: {fileID: 3985169889823466519, guid: afb3e7feb9b9e804690c67182fd7a0f3,
         type: 3}
@@ -191,18 +190,13 @@ PrefabInstance:
         type: 3}
 =======
 >>>>>>> 615b0e4207c4e67b7db44ba423a77ebdb787e504
-=======
->>>>>>> Stashed changes
     - target: {fileID: 7521136525286094428, guid: afb3e7feb9b9e804690c67182fd7a0f3,
         type: 3}
       propertyPath: m_Name
       value: Anomaly_Ball
       objectReference: {fileID: 0}
-<<<<<<< Updated upstream
 <<<<<<< HEAD
 =======
-=======
->>>>>>> Stashed changes
     - target: {fileID: 7521136525286094428, guid: afb3e7feb9b9e804690c67182fd7a0f3,
         type: 3}
       propertyPath: m_IsActive
@@ -213,20 +207,14 @@ PrefabInstance:
       propertyPath: problem
       value: 
       objectReference: {fileID: 1525849136}
-<<<<<<< Updated upstream
 >>>>>>> 615b0e4207c4e67b7db44ba423a77ebdb787e504
-=======
->>>>>>> Stashed changes
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afb3e7feb9b9e804690c67182fd7a0f3, type: 3}
-<<<<<<< Updated upstream
 <<<<<<< HEAD
 =======
-=======
->>>>>>> Stashed changes
 --- !u!1001 &322566223
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -317,10 +305,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2bb53f3f4f38fba4b9c9785fc23f6ba7, type: 3}
-<<<<<<< Updated upstream
 >>>>>>> 615b0e4207c4e67b7db44ba423a77ebdb787e504
-=======
->>>>>>> Stashed changes
 --- !u!1 &1115672969
 GameObject:
   m_ObjectHideFlags: 0
@@ -439,11 +424,8 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
-<<<<<<< Updated upstream
 <<<<<<< HEAD
 =======
-=======
->>>>>>> Stashed changes
 --- !u!114 &1525849136 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1239501931220217909, guid: afb3e7feb9b9e804690c67182fd7a0f3,
@@ -456,10 +438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 660d1ff00c4a7b24ab3c19e768a142d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< Updated upstream
 >>>>>>> 615b0e4207c4e67b7db44ba423a77ebdb787e504
-=======
->>>>>>> Stashed changes
 --- !u!1 &1806094970
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,14 +451,10 @@ GameObject:
   - component: {fileID: 1806094972}
   - component: {fileID: 1806094971}
   - component: {fileID: 1806094974}
-<<<<<<< Updated upstream
 <<<<<<< HEAD
 =======
   - component: {fileID: 1806094975}
 >>>>>>> 615b0e4207c4e67b7db44ba423a77ebdb787e504
-=======
-  - component: {fileID: 1806094975}
->>>>>>> Stashed changes
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -526,15 +501,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-<<<<<<< Updated upstream
 <<<<<<< HEAD
   near clip plane: 0.3
 =======
   near clip plane: 0.1
 >>>>>>> 615b0e4207c4e67b7db44ba423a77ebdb787e504
-=======
-  near clip plane: 0.1
->>>>>>> Stashed changes
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -563,15 +534,11 @@ Transform:
   m_GameObject: {fileID: 1806094970}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-<<<<<<< Updated upstream
 <<<<<<< HEAD
   m_LocalPosition: {x: 0, y: 1, z: -10}
 =======
   m_LocalPosition: {x: 1.4069084, y: 3.52, z: -6.1985784}
 >>>>>>> 615b0e4207c4e67b7db44ba423a77ebdb787e504
-=======
-  m_LocalPosition: {x: 1.4069084, y: 3.52, z: -6.1985784}
->>>>>>> Stashed changes
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -621,11 +588,8 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
-<<<<<<< Updated upstream
 <<<<<<< HEAD
 =======
-=======
->>>>>>> Stashed changes
 --- !u!114 &1806094975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -660,10 +624,7 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
-<<<<<<< Updated upstream
 >>>>>>> 615b0e4207c4e67b7db44ba423a77ebdb787e504
-=======
->>>>>>> Stashed changes
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -671,11 +632,7 @@ SceneRoots:
   - {fileID: 1806094973}
   - {fileID: 1115672971}
   - {fileID: 275934828}
-<<<<<<< Updated upstream
 <<<<<<< HEAD
 =======
   - {fileID: 322566223}
 >>>>>>> 615b0e4207c4e67b7db44ba423a77ebdb787e504
-=======
-  - {fileID: 322566223}
->>>>>>> Stashed changes
