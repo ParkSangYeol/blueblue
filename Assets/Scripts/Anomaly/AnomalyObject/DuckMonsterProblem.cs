@@ -8,9 +8,9 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 
-namespace Problem.Object
+namespace Anomaly.Object
 {
-    public class DuckMonsterProblem : ProblemObject
+    public class DuckMonsterProblem : AnomalyObject
     {
         private Vector3 startPos;
         private NavMeshAgent agent;

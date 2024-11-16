@@ -1,11 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Anomaly.Object;
 using UnityEngine;
 
-namespace Problem.Object
+namespace Anomaly.Object
 {
-    public class ActiveSoundProblem : ProblemObject
+    public class ActiveSoundProblem : AnomalyObject
     {
         [SerializeField] 
         private AudioClip audioClip;

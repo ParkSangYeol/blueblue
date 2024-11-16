@@ -5,9 +5,9 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Problem.Object
+namespace Anomaly.Object
 {
-    public class WindowOpeningProblem : ProblemObject
+    public class WindowOpeningProblem : AnomalyObject
     {
         [SerializeField]
         private DOTweenAnimation animation;
