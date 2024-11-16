@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Anomaly.Object;
 using UnityEngine;
-using Problem.Object;
 using Plugins.Animate_UI_Materials;
 
 namespace Anomaly
 {
-    public class StartClothesColorChange : ProblemObject
+    public class StartClothesColorChange : AnomalyObject
     {
         private Animator animator;
         private bool isTriggered = false;

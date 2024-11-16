@@ -1,13 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Problem.Object;
 using Unity.VisualScripting;
 using UnityEngine;
 
-namespace Problem.Object
+namespace Anomaly.Object
 {
-    public class JumpScareSample : ProblemObject
+    public class JumpScareSample : AnomalyObject
     {
         public GameObject scareObject;
 
