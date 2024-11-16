@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Problem
+namespace Anomaly
 {
     public class DoorController : MonoBehaviour
     {
