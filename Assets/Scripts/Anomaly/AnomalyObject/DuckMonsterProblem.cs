@@ -29,6 +29,9 @@ namespace Anomaly.Object
         
         [SerializeField] 
         private AudioClip screamSFX;
+
+        [SerializeField] 
+        private GameObject blackScreen;
         
         public UnityEvent onCatchPlayer;
         private Sequence jumpScareSequence;
@@ -67,6 +70,7 @@ namespace Anomaly.Object
         public override void ResetProblem()
         {
             transform.position = startPos;
+            blackScreen.SetActive(false);
         }
 
         IEnumerator TrackPlayer()
@@ -94,7 +98,6 @@ namespace Anomaly.Object
         {
             Debug.Log("Call");
             // TODO 플레이어 이동 제한 및 카메라 움직임 제한시키기
-            
             // TODO 게임 내 모든 조명 비활성화하기
             // 괴물 오리 오브젝트 이동
             jumpScareDuck.transform.position = playerTransform.position + new Vector3(0, 2f, 0) + playerTransform.forward * 0.26f;
@@ -121,8 +124,10 @@ namespace Anomaly.Object
             
             // SFX 출력
             SoundManager.Instance.PlaySFX(sfxPlayer, screamSFX, false);
-            yield return null;
-            // TODO 화면 암전 게임 오버 연출 진행.
+            
+            // 암전 게임 오버 연출 진행.
+            yield return new WaitForSeconds(1.6f);
+            blackScreen.SetActive(true);
         }
     }
 }
