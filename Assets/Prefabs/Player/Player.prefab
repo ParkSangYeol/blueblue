@@ -293,7 +293,7 @@ PrefabInstance:
     - target: {fileID: -6687504106412162394, guid: 14d42edfcdefc304f901d8554bd5e48a,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -6452266432751415832, guid: 14d42edfcdefc304f901d8554bd5e48a,
         type: 3}
@@ -323,6 +323,11 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 14d42edfcdefc304f901d8554bd5e48a,
         type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 14d42edfcdefc304f901d8554bd5e48a,
+        type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 1082271958561512970, guid: 14d42edfcdefc304f901d8554bd5e48a,
@@ -375,6 +380,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1372098457924883631}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 14d42edfcdefc304f901d8554bd5e48a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1667332249434660983}
   m_SourcePrefab: {fileID: 100100000, guid: 14d42edfcdefc304f901d8554bd5e48a, type: 3}
 --- !u!95 &1429220778310951507 stripped
 Animator:
@@ -426,6 +435,7 @@ MonoBehaviour:
   groundTagName: Ground
   groundCheckAngle: 45
   animator: {fileID: 1429220778310951507}
+  groundRay: 0.2
 --- !u!143 &1372098457924883631
 CharacterController:
   m_ObjectHideFlags: 0
@@ -451,6 +461,29 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
+  m_Center: {x: 0, y: 1.87, z: 0}
+--- !u!136 &1667332249434660983
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5656064566805226131}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.4
+  m_Height: 3.8
+  m_Direction: 1
   m_Center: {x: 0, y: 1.87, z: 0}
 --- !u!4 &5830830288893823920 stripped
 Transform:
