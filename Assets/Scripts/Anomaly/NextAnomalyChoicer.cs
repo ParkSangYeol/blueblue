@@ -3,14 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Problem
+namespace Anomaly
 {
-    public class NextProblemChoicer : MonoBehaviour
+    public class NextAnomalyChoicer : MonoBehaviour
     {
         [SerializeField]
         private BoxCollider choiceCollider;
         public bool isTrueChoiceArea;
-        public ProblemsLoader loader;
+        public AnomalyLoader loader;
         private void Awake()
         {
             if (choiceCollider == null)

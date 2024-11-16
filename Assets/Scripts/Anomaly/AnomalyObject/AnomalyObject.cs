@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-namespace Problem.Object
+namespace Anomaly.Object
 {
-    public abstract class ProblemObject : MonoBehaviour
+    public abstract class AnomalyObject : MonoBehaviour
     {
         public bool activeOnStart;
         protected abstract void ActivePhenomenon();

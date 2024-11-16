@@ -1,23 +1,23 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Problem.Object;
+using Anomaly.Object;
 using UnityEngine;
 
-namespace Problem
+namespace Anomaly
 {
-    public class ProblemMapHandler : MonoBehaviour
+    public class AnomalyMapHandler : MonoBehaviour
     {
         public Transform loadTransform;
 
         public DoorController leftDoor;
         public DoorController rightDoor;
 
-        public NextProblemChoicer choiceTrueCollider;
-        public NextProblemChoicer choiceFalseCollider;
-        public ProblemUnLoader unloadCollider;
+        public NextAnomalyChoicer choiceTrueCollider;
+        public NextAnomalyChoicer choiceFalseCollider;
+        public AnomalyUnLoader unloadCollider;
         
-        public ProblemObject problem;
+        public AnomalyObject problem;
 
         public void ResetProblem()
         {
