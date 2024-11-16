@@ -15,6 +15,7 @@ namespace Anomaly.Object
         private Vector3 startPos;
         private NavMeshAgent agent;
         private Transform playerTransform;
+        private CinemachineVirtualCamera cvc;
         private bool isTracking;
 
         [SerializeField] 
@@ -52,7 +53,8 @@ namespace Anomaly.Object
             {
                 mainCamera = Camera.main;
             }
-            
+
+            cvc = playerTransform.GetComponentInChildren<CinemachineVirtualCamera>();
             base.Start();
         }
         
@@ -92,6 +94,7 @@ namespace Anomaly.Object
         {
             Debug.Log("Call");
             // TODO 플레이어 이동 제한 및 카메라 움직임 제한시키기
+            
             // TODO 게임 내 모든 조명 비활성화하기
             // 괴물 오리 오브젝트 이동
             jumpScareDuck.transform.position = playerTransform.position + new Vector3(0, 2f, 0) + playerTransform.forward * 0.26f;
@@ -99,17 +102,23 @@ namespace Anomaly.Object
             // jumpScareDuck.transform.rotation = new Quaternion(0f, jumpScareDuck.transform.rotation.y, 0f, 1f);
             jumpScareDuck.transform.Rotate(0,180,0,Space.Self);
             yield return null;
+            
             // 점프스케어 연출 진행
             jumpScareSequence = DOTween.Sequence();
             jumpScareSequence.SetAutoKill(false);
             jumpScareSequence
                 .Append(jumpScareDuck.transform
-                    .DOMoveY(mainCamera.transform.position.y - 0.17f, 0.5f).SetEase(Ease.OutExpo))
+                    .DOMoveY(mainCamera.transform.position.y - 0.18f, 0.5f).SetEase(Ease.OutExpo))
                 .Append(jumpScareDuck.transform
                     .DORotateQuaternion(playerTransform.rotation * Quaternion.Euler(15, 180, 0), 0.1f)
                     .SetDelay(1f)
                     );
-            // TODO 카메라 흔들림 연출. 현재 CineMachine Brain을 사용해 DOTween 연출이 안먹음. 
+            
+            // 카메라 흔들림
+            CinemachineBasicMultiChannelPerlin noise = cvc.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+            noise.m_AmplitudeGain = 0.2f;
+            noise.m_FrequencyGain = 1;
+            
             // SFX 출력
             SoundManager.Instance.PlaySFX(sfxPlayer, screamSFX, false);
             yield return null;
