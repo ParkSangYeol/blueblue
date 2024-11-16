@@ -6,13 +6,13 @@ using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Problem
+namespace Anomaly
 {
-    public class ProblemsLoader : MonoBehaviour
+    public class AnomalyLoader : MonoBehaviour
     {
-        public ProblemMapHandler beforeProblemMap;
-        public ProblemMapHandler currentProblemMap;
-        public ProblemMapHandler nextProblemMap;
+        public AnomalyMapHandler beforeProblemMap;
+        public AnomalyMapHandler currentProblemMap;
+        public AnomalyMapHandler nextProblemMap;
         public List<StageScriptableObject> stages;
         public int stageThreshold;
         private int[,] numOfAppearance; // [스테이지][문제 번호]의 등장 횟수 추적.
@@ -114,7 +114,7 @@ namespace Problem
             }
         }
         
-        public void LoadProblem(ProblemScriptableObject problemData, bool isLeft)
+        public void LoadProblem(AnomalyScriptableObject problemData, bool isLeft)
         {
             if (!EditorApplication.isPlaying)
             {
@@ -125,7 +125,7 @@ namespace Problem
             // 이상현상 생성. (혹은 가져오기)
             Transform spawnTransform = currentProblemMap.loadTransform;
             GameObject problemMapObject = Instantiate(problemData.problemPrefab, spawnTransform.position, spawnTransform.rotation);
-            nextProblemMap = problemMapObject.GetComponent<ProblemMapHandler>();
+            nextProblemMap = problemMapObject.GetComponent<AnomalyMapHandler>();
             // 이상현상 리셋.
             nextProblemMap.ResetProblem();
             nextProblemMap.choiceTrueCollider.loader = nextProblemMap.choiceFalseCollider.loader = nextProblemMap.unloadCollider.loader = this;
@@ -153,7 +153,7 @@ namespace Problem
             // 이상현상 생성. (혹은 가져오기)
             Transform spawnTransform = currentProblemMap.loadTransform;
             GameObject problemMapObject = Instantiate(problemMap, spawnTransform.position, spawnTransform.rotation);
-            nextProblemMap = problemMapObject.GetComponent<ProblemMapHandler>();
+            nextProblemMap = problemMapObject.GetComponent<AnomalyMapHandler>();
             // 이상현상 리셋.
             nextProblemMap.ResetProblem();
             nextProblemMap.choiceTrueCollider.loader = nextProblemMap.choiceFalseCollider.loader = nextProblemMap.unloadCollider.loader = this;
@@ -205,7 +205,7 @@ namespace Problem
             isLoadNewMap = false;
         }
         
-        private ProblemScriptableObject GetRandomProblem()
+        private AnomalyScriptableObject GetRandomProblem()
         {
             // 현재 데이터 중 등장하지 않은 랜덤한 값 출력.
             List<int> idxs = new List<int>();
@@ -231,7 +231,7 @@ namespace Problem
             minAppearance = minCount == 1? tempMinAppearance +1 : tempMinAppearance;
             int randIdx = Random.Range(0, idxs.Count);
             currentMapIdx = idxs[randIdx];
-            ProblemScriptableObject returnData = stages[stageIdx].problems[idxs[randIdx]];
+            AnomalyScriptableObject returnData = stages[stageIdx].problems[idxs[randIdx]];
             return returnData;
         }
     }

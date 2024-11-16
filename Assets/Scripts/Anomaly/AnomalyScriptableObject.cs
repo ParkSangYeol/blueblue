@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using Anomaly;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Problem
+namespace Anomaly
 {
     [CreateAssetMenu(menuName = "ScriptableObjects/ProblemData", fileName = "ProblemData")]
-    public class ProblemScriptableObject : ScriptableObject
+    public class AnomalyScriptableObject : ScriptableObject
     {
         [EnumToggleButtons, HideLabel]
-        public ProblemType type;
+        public AnomalyType type;
         [AssetsOnly]
         public GameObject problemPrefab;
     }

@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Problem
+namespace Anomaly
 {
     [System.Flags]
-    public enum ProblemType
+    public enum AnomalyType
     {
         BABYHOOD = 1 << 1,
         CHILDHOOD= 1 << 2,

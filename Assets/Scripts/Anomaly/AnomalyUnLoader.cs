@@ -3,14 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Problem
+namespace Anomaly
 {
-    public class ProblemUnLoader : MonoBehaviour
+    public class AnomalyUnLoader : MonoBehaviour
     {
         [SerializeField] 
         private BoxCollider boxCollider;
 
-        public ProblemsLoader loader;
+        public AnomalyLoader loader;
         private void Awake()
         {
             if (boxCollider == null)
