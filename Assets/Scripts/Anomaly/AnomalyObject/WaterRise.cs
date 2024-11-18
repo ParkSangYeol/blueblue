@@ -6,6 +6,7 @@ namespace Anomaly.Object
 {
    public class WaterRise : AnomalyObject
    {
+      
       public GameObject waterBlock;
       
       [Tooltip("올라오는 속도 : 1.0 ~ 10.0 설정")]
