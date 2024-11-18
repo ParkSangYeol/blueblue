@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 92278690334351518}
   - component: {fileID: 8378036196925078241}
   m_Layer: 0
-  m_Name: NoisyDisplay
+  m_Name: 34CH_NoisyDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,13 +27,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6576247584562035893}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
+  m_LocalRotation: {x: -0.70710474, y: 0.0017154794, z: -0.0017154794, w: -0.70710474}
   m_LocalPosition: {x: -0.00002028942, y: 0.42031175, z: 0.07395935}
-  m_LocalScale: {x: 0.08257408, y: 1, z: 0.05051021}
+  m_LocalScale: {x: 0.05149155, y: 0.6000001, z: 0.03119106}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 360.278}
 --- !u!33 &8956166531531742122
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9b876510f57a7a742a277230184aa52b, type: 2}
+  - {fileID: 2100000, guid: 1ff8a3c0ad66926478164488860a64b9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
