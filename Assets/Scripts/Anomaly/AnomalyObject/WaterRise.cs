@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Problem.Object
+namespace Anomaly.Object
 {
-   public class WaterRise : ProblemObject
+   public class WaterRise : AnomalyObject
    {
       public GameObject waterBlock;
       
