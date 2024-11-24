@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38f203724ba6357488c4885f3259eb57, type: 3}
   m_Name: Dark
   m_EditorClassIdentifier: 
-  type: 0
-  problemPrefab: {fileID: 0}
+  type: 2
+  problemPrefab: {fileID: 2073365777762797856, guid: 39e1d7a9ef8065549a875e8dfb3e78ac,
+    type: 3}
