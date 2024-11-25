@@ -18,6 +18,7 @@ namespace PlayerControl
         [MinMaxSlider(-180, 180,true)]
         public Vector2 mouse_Up_Down_Restrict = new Vector2(-90, 90);
 
+        private bool jumpScareTriggered = false;
         void Start()
         {
             Cursor.lockState = CursorLockMode.Locked;
@@ -32,13 +33,22 @@ namespace PlayerControl
             xRotation -= mouseY;
             xRotation = Mathf.Clamp(xRotation, mouse_Up_Down_Restrict.x, mouse_Up_Down_Restrict.y);
 
-            transform.localRotation = Quaternion.Euler(xRotation, 0f,0f);
-            //playerHead.Rotate(Vector3.up * mouseX);
-            // 캐릭터에 rigidbody랑 충돌이 있어서 발생한 문제
+            if (!jumpScareTriggered)
+            {
+                transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+                //playerHead.Rotate(Vector3.up * mouseX);
+                // 캐릭터에 rigidbody랑 충돌이 있어서 발생한 문제
 
-            //Quaternion yRotation = Quaternion.Euler(0f, mouseX, 0f);
-            //rb.MoveRotation(rb.rotation * yRotation);
-            playerHead.Rotate(Vector3.up * mouseX);
+                //Quaternion yRotation = Quaternion.Euler(0f, mouseX, 0f);
+                //rb.MoveRotation(rb.rotation * yRotation);
+                playerHead.Rotate(Vector3.up * mouseX);
+            }
+        }
+
+        public void WhenJumpScareTriggered()
+        {
+            transform.localRotation = Quaternion.Euler(0, 0, 0);
+            jumpScareTriggered = true;
         }
     }
 }

@@ -48,6 +48,8 @@ namespace PlayerControl {
 
         private float sphereRadius = 0.1f;
 
+        private bool jumpScareTriggered = false;
+
         private void Start()
         {
             //rb = GetComponent<Rigidbody>();
@@ -184,11 +186,18 @@ namespace PlayerControl {
                 velocity.x = 0;
                 velocity.z = 0;
             }
-
-            velocity.y += Physics.gravity.y * Time.deltaTime * fallSpeedFilter;
-            controller.Move(velocity * Time.deltaTime);
+            if(velocity.y > highestFallSpeed)
+                velocity.y += Physics.gravity.y * Time.deltaTime * fallSpeedFilter;
+            if(!jumpScareTriggered)
+                controller.Move(velocity * Time.deltaTime);
             if (isGround && velocity.y < 0) velocity.y = highestFallSpeed;
         }
+
+        public void WhenJumpScareTriggered()
+        {
+            jumpScareTriggered= true;
+        }
+
         private void OnControllerColliderHit(ControllerColliderHit hit)
         {
             if (hit.collider.CompareTag(groundTagName) && velocity.y > 0)
