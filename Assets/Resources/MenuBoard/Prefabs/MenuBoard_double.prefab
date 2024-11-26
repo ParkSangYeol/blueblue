@@ -284,7 +284,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &11437116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,7 +301,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1399
 --- !u!1 &176058
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,8 +368,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 66175ce4539650347978966f9f548d0b, type: 3}
-    m_FontSize: 20
+    m_Font: {fileID: 12800000, guid: 28d6cbb3accc2924ea14f73ce41b7b76, type: 3}
+    m_FontSize: 23
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -380,9 +380,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Mega Burger :      8$\nSpecial Burger:    12$\n              ----\nSweet
-    Potato Fries: 3.5$\nNormal Fries:          3$\n              ----\nCheesecake
-    :   5\u20AC\nCookies:        2\u20AC\n"
+  m_Text: "\n1. \uC774\uC0C1\uD604\uC0C1\uC774 \uC788\uB2E4\uBA74, \uC67C\uCABD \uBB38\uC744
+    \uC120\uD0DD\uD558\uC138\uC694.\n2. \uC774\uC0C1\uD604\uC0C1\uC774 \uC5C6\uB2E4\uBA74,
+    \uC624\uB978\uCABD \uBB38\uC744 \uC120\uD0DD\uD558\uC138\uC694."
 --- !u!1 &180030
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,7 +449,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 66175ce4539650347978966f9f548d0b, type: 3}
+    m_Font: {fileID: 12800000, guid: 28d6cbb3accc2924ea14f73ce41b7b76, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
@@ -461,11 +461,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Lunar Cats
-
-    Studio
-
-    ---------'
+  m_Text: "\uAC00\uC774\uB4DC\nGuide"
 --- !u!1 &1103862920389262
 GameObject:
   m_ObjectHideFlags: 0
@@ -671,7 +667,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 66175ce4539650347978966f9f548d0b, type: 3}
+    m_Font: {fileID: 12800000, guid: 28d6cbb3accc2924ea14f73ce41b7b76, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
@@ -683,11 +679,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Lunar Cats
-
-    Studio
-
-    ---------'
+  m_Text: "\uAC00\uC774\uB4DC\nGuide"
 --- !u!1 &1600366082414742
 GameObject:
   m_ObjectHideFlags: 0
@@ -829,7 +821,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &114627485280266100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -846,7 +838,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1399
 --- !u!1 &1781926475903130
 GameObject:
   m_ObjectHideFlags: 0
@@ -996,8 +988,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 66175ce4539650347978966f9f548d0b, type: 3}
-    m_FontSize: 20
+    m_Font: {fileID: 12800000, guid: 28d6cbb3accc2924ea14f73ce41b7b76, type: 3}
+    m_FontSize: 23
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -1008,6 +1000,6 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Mega Burger :      8$\nSpecial Burger:    12$\n              ----\nSweet
-    Potato Fries: 3.5$\nNormal Fries:          3$\n              ----\nCheesecake
-    :   5\u20AC\nCookies:        2\u20AC\n"
+  m_Text: "\n1. \uC774\uC0C1\uD604\uC0C1\uC774 \uC788\uB2E4\uBA74, \uC67C\uCABD \uBB38\uC744
+    \uC120\uD0DD\uD558\uC138\uC694.\n2. \uC774\uC0C1\uD604\uC0C1\uC774 \uC5C6\uB2E4\uBA74,
+    \uC624\uB978\uCABD \uBB38\uC744 \uC120\uD0DD\uD558\uC138\uC694."
