@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 namespace Anomaly
@@ -167,6 +168,11 @@ namespace Anomaly
             {
                 currentProblemMap.rightDoor.OpenDoor();
             }
+        }
+
+        public void ResetGame()
+        {
+            SceneManager.LoadScene(SceneManager.loadedSceneCount);
         }
         
         [Button]
