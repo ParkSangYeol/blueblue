@@ -228,10 +228,14 @@ namespace PlayerControl {
         private void CheckFootStep()
         {
             AnimatorStateInfo a = animator.GetCurrentAnimatorStateInfo(0);
-
-            if(a.IsName("Base Layer.Walking"))
+            if(a.IsName("Base Layer.Walking") && (Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0))
             {
                 footStepTimer -= Time.deltaTime;
+            }
+            else
+            {
+                footStepTimer = maxFootStepTimer;
+                return;
             }
 
             if(footStepTimer > 0f)
