@@ -1,5 +1,8 @@
 using com.kleberswf.lib.core;
+using PlayerControl;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace UI
@@ -13,7 +16,12 @@ namespace UI
 
         [Header("BGM")] [SerializeField] private Slider bgmSlider;
         [Header("SFX")] [SerializeField] private Slider sfxSlider;
-        [Header("Sensitivity")] [SerializeField] private Slider mouseSlider;
+        [Header("Sensitivity")] 
+        public UnityEvent onSensitivityValueChanged;
+        [SerializeField] private Slider mouseSlider;
+        [SerializeField] private float curSensitivity;
+        [SerializeField]private float minSensitivity = 50f;
+        [SerializeField]private float maxSensitivity = 150f;
         [Header("Button")] 
         [SerializeField] private Button continueBtn;
         [SerializeField] private Button exitBtn;
@@ -22,6 +30,8 @@ namespace UI
         void Start()
         {
             Invoke(nameof(Initialize), 0.1f);
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         // Update is called once per frame
@@ -30,6 +40,9 @@ namespace UI
             if (Input.GetKeyDown(settingKeyCode))
             {
                 settingUICanvas.SetActive(!settingUICanvas.activeSelf);
+                Cursor.visible = settingUICanvas.activeSelf;
+                if (settingUICanvas.activeSelf) Cursor.lockState = CursorLockMode.None;
+                else Cursor.lockState = CursorLockMode.Locked;
             }
         }
 
@@ -53,6 +66,12 @@ namespace UI
             
             #region Mouse
 
+            curSensitivity = PlayerPrefs.GetFloat("Sensitivity", 100f);
+            mouseSlider.value = curSensitivity;
+            mouseSlider.maxValue = maxSensitivity;
+            mouseSlider.minValue = minSensitivity;
+            mouseSlider.onValueChanged.AddListener(OnSensitivityValueChanged);
+            
             #endregion
             
             #region Button
@@ -64,6 +83,33 @@ namespace UI
             
         }
 
+        #region Slider
+        
+        private void OnBGMValueChanged(float volume)
+        {
+            SoundManager.Instance.ChangeBGMVolume(volume);
+        }
+        private void OnSFXValueChanged(float volume)
+        {
+            SoundManager.Instance.ChangeSFXVolume(volume);
+        }
+
+        private void OnSensitivityValueChanged(float value)
+        {
+            curSensitivity = value;
+            PlayerPrefs.SetFloat("Sensitivity", curSensitivity);
+            onSensitivityValueChanged.Invoke();
+        }
+
+        public float GetSensitivity()
+        {
+            return curSensitivity;
+        }
+        
+        #endregion
+        
+        #region Button
+
         private void OnClickContinueBtn()
         {
             settingUICanvas.SetActive(!settingUICanvas.activeSelf);
@@ -74,19 +120,11 @@ namespace UI
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
 #else
-        Application.Quit(); // ���ø����̼� ����
+        Application.Quit();
 #endif
         }
 
-        private void OnBGMValueChanged(float volume)
-        {
-            SoundManager.Instance.ChangeBGMVolume(volume);
-            Debug.Log("BGM Volume : " + volume);
-        }
-        private void OnSFXValueChanged(float volume)
-        {
-            SoundManager.Instance.ChangeSFXVolume(volume);
-            Debug.Log("SFX Volume : " + volume);
-        }
+        #endregion
+
     }
 }

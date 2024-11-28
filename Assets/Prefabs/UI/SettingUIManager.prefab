@@ -1076,10 +1076,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 6536997525075492302}
   m_HandleRect: {fileID: 6179053010454761198}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: 50
+  m_MaxValue: 150
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1799,12 +1799,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c9bef4c4cc7f649a1c6cfb16a9c083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Persistent: 0
+  Persistent: 1
   settingUICanvas: {fileID: 4056395085840594347}
   settingKeyCode: 27
   bgmSlider: {fileID: 3141708962275313512}
   sfxSlider: {fileID: 6389146681553165285}
+  onSensitivityValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
   mouseSlider: {fileID: 6000724965002142181}
+  curSensitivity: 0
+  minSensitivity: 50
+  maxSensitivity: 150
   continueBtn: {fileID: 1738964026820454514}
   exitBtn: {fileID: 2923909786683945060}
 --- !u!1 &5271372200208410208
