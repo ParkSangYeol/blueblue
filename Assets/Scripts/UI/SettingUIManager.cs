@@ -7,9 +7,9 @@ namespace UI
     public class SettingUIManager : Singleton<SettingUIManager>
     {
         [Header("UI Canvas")] 
-        [Tooltip("¼³Á¤ UI Äµ¹ö½º")][SerializeField]private GameObject settingUICanvas;
+        [Tooltip("ï¿½ï¿½ï¿½ï¿½ UI Äµï¿½ï¿½ï¿½ï¿½")][SerializeField]private GameObject settingUICanvas;
         public GameObject SettingUICanvas => settingUICanvas;
-        [Tooltip("¼³Á¤ È°¼ºÈ­ ¹öÆ°")] public KeyCode settingKeyCode = KeyCode.Escape;
+        [Tooltip("ï¿½ï¿½ï¿½ï¿½ È°ï¿½ï¿½È­ ï¿½ï¿½Æ°")] public KeyCode settingKeyCode = KeyCode.Escape;
 
         [Header("BGM")] [SerializeField] private Slider bgmSlider;
         [Header("SFX")] [SerializeField] private Slider sfxSlider;
@@ -21,7 +21,7 @@ namespace UI
         // Start is called before the first frame update
         void Start()
         {
-            Initialize();
+            Invoke(nameof(Initialize), 0.1f);
         }
 
         // Update is called once per frame
@@ -74,7 +74,7 @@ namespace UI
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
 #else
-        Application.Quit(); // ¾îÇÃ¸®ÄÉÀÌ¼Ç Á¾·á
+        Application.Quit(); // ï¿½ï¿½ï¿½Ã¸ï¿½ï¿½ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½
 #endif
         }
 
