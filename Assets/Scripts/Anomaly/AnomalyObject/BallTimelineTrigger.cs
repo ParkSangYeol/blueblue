@@ -55,6 +55,7 @@ namespace Anomaly.Object
         {
             if (other.CompareTag("Player") && !isTrigger)
             {
+                Debug.Log("Start_ball");
                 isTrigger = true;
                 ActivePhenomenon();
             }

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Ball
   m_EditorClassIdentifier: 
   type: 2
-  problemPrefab: {fileID: 7521136525286094428, guid: afb3e7feb9b9e804690c67182fd7a0f3,
+  problemPrefab: {fileID: 8695752899375100970, guid: c22d4ec6181fb9a43be7832113cbac46,
     type: 3}

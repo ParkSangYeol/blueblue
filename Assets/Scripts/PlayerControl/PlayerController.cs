@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using Unity.Burst.CompilerServices;
+using ground;
 
 namespace PlayerControl {
     public class PlayerController : SerializedMonoBehaviour
@@ -33,6 +34,10 @@ namespace PlayerControl {
         [Title("GroundRay")]
         [InfoBox("바닥을 판정하기 위해 쏘는 레이의 길이(0.2f 기준 scale 0.5 ~ 1.0에서 정상적으로 작동함")]
         public float groundRay = 0.2f;
+        [InfoBox("소리 출력 용 - 사운드 클립 시간에 맞춰서")]
+        public float maxFootStepTimer = 1f;
+
+        private float footStepTimer;
 
         //private Rigidbody rb;
         private CharacterController controller;
@@ -50,6 +55,7 @@ namespace PlayerControl {
 
         private bool jumpScareTriggered = false;
 
+
         private void Start()
         {
             //rb = GetComponent<Rigidbody>();
@@ -64,6 +70,7 @@ namespace PlayerControl {
             {
                 Physics.IgnoreCollision(characterCollider, characterCollider, true);
             }
+            footStepTimer = 0.05f;
         }
 
         private void Update()
@@ -150,6 +157,7 @@ namespace PlayerControl {
                 velocity.y = jumpForce;
                 isGround = false;
             }
+            CheckFootStep();
             //animation
             animator.SetFloat("Speed", Mathf.Abs(inputFB) + Mathf.Abs(inputRL));
             animator.SetFloat("VelocityY", velocity.y);
@@ -191,6 +199,51 @@ namespace PlayerControl {
             if(!jumpScareTriggered)
                 controller.Move(velocity * Time.deltaTime);
             if (isGround && velocity.y < 0) velocity.y = highestFallSpeed;
+        }
+
+        private AudioClip GetFootStepSFX()
+        {
+            AudioClip result = null;
+            RaycastHit[] groundChecks = Physics.SphereCastAll(
+                    transform.position,    // 시작 위치
+                    groundRay,          // 구의 반지름
+                    Vector3.down,          // 방향
+                    0.05f,             // 최대 거리
+                    ground                 // 레이어 마스크
+                    );
+
+            foreach (RaycastHit hit in groundChecks)
+            {
+                GameObject g = hit.collider.gameObject;
+                // 자신이나 무시해야 할 충돌체를 필터링
+                if (g.TryGetComponent<Ground>(out var groundComponent))
+                {
+                    result = groundComponent.GetFootStep();
+                }
+            }
+
+            return result;
+        }
+
+        private void CheckFootStep()
+        {
+            AnimatorStateInfo a = animator.GetCurrentAnimatorStateInfo(0);
+
+            if(a.IsName("Base Layer.Walking"))
+            {
+                footStepTimer -= Time.deltaTime;
+            }
+
+            if(footStepTimer > 0f)
+            {
+                return;
+            }
+            AudioClip footStepSFX = GetFootStepSFX();
+            if (footStepSFX != null)
+            {
+                SoundManager.Instance.PlaySFX(footStepSFX);
+                footStepTimer = maxFootStepTimer;
+            }
         }
 
         public void WhenJumpScareTriggered()
