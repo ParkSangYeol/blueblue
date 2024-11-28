@@ -55,12 +55,12 @@ public class SoundManager : com.kleberswf.lib.core.Singleton<SoundManager>
     private void Start()
     {
         allMasterVolume = PlayerPrefs.GetFloat("MasterVolume", 1);
-        bgmMasterVolume = PlayerPrefs.GetFloat("BGMVolume");
-        sfxMasterVolume = PlayerPrefs.GetFloat("SFXVolume");
+        bgmMasterVolume = PlayerPrefs.GetFloat("BGMVolume", 1);
+        sfxMasterVolume = PlayerPrefs.GetFloat("SFXVolume", 1);
         
         bgmAudioPlayer.volume = bgmMasterVolume;
 
-        masterMixer.SetFloat("AllVolume", Mathf.Log10(allMasterVolume) * 20);
+        masterMixer.SetFloat("MasterVolume", Mathf.Log10(allMasterVolume) * 20);
         masterMixer.SetFloat("BGMVolume", Mathf.Log10(bgmMasterVolume) * 20);
         masterMixer.SetFloat("SFXVolume", Mathf.Log10(sfxMasterVolume) * 20);
     }
@@ -70,7 +70,7 @@ public class SoundManager : com.kleberswf.lib.core.Singleton<SoundManager>
         PlayerPrefs.SetFloat("MasterVolume", allMasterVolume);
         PlayerPrefs.Save();
         
-        masterMixer.SetFloat("AllVolume", Mathf.Log10(allMasterVolume) * 20);
+        masterMixer.SetFloat("MasterVolume", Mathf.Log10(allMasterVolume) * 20);
     }
 
     public void ChangeBGMVolume(float bgm)
