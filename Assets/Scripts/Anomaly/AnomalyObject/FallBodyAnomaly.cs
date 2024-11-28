@@ -47,8 +47,9 @@ public class FallBodyAnomaly : AnomalyObject
     IEnumerator FallProduction()
     {
         SoundManager.Instance.PlaySFX(brokeSfxPlayer, windowBroke);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.3f);
         doTweenAnimation.DORestart();
-        SoundManager.Instance.PlaySFX(bodyFall);
+        yield return new WaitForSeconds(0.7f);
+        SoundManager.Instance.PlaySFX(brokeSfxPlayer, bodyFall);
     }
 }

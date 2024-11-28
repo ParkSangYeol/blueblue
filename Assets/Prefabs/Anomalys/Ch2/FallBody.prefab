@@ -170,7 +170,7 @@ PrefabInstance:
     - target: {fileID: 3379042565793953530, guid: 258b94ba19e99274ebaba180b90f3e96,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -26.94
       objectReference: {fileID: 0}
     - target: {fileID: 3379042565793953530, guid: 258b94ba19e99274ebaba180b90f3e96,
         type: 3}
@@ -180,7 +180,7 @@ PrefabInstance:
     - target: {fileID: 3379042565793953530, guid: 258b94ba19e99274ebaba180b90f3e96,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -16
       objectReference: {fileID: 0}
     - target: {fileID: 3379042565793953530, guid: 258b94ba19e99274ebaba180b90f3e96,
         type: 3}
@@ -221,6 +221,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pitch
       value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549253774142331355, guid: 258b94ba19e99274ebaba180b90f3e96,
+        type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -276,7 +281,7 @@ PrefabInstance:
     - target: {fileID: 2472660242196181385, guid: 3376a0e16ee91c74ca030ecf96e5d063,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 155.2
+      value: 193.4
       objectReference: {fileID: 0}
     - target: {fileID: 2472660242196181385, guid: 3376a0e16ee91c74ca030ecf96e5d063,
         type: 3}
@@ -389,7 +394,7 @@ MonoBehaviour:
   targetGO: {fileID: 0}
   tweenTargetIsTargetGO: 1
   delay: 0
-  duration: 0.2
+  duration: 0.8
   easeType: 8
   easeCurve:
     serializedVersion: 2
@@ -432,7 +437,7 @@ MonoBehaviour:
   autoPlay: 0
   useTargetAsV3: 0
   endValueFloat: 0
-  endValueV3: {x: -71.6, y: 47, z: -164.3}
+  endValueV3: {x: -71.6, y: 0, z: -164.3}
   endValueV2: {x: 0, y: 0}
   endValueColor: {r: 1, g: 1, b: 1, a: 1}
   endValueString: 
