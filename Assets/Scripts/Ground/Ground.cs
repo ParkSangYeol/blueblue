@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,11 +7,19 @@ namespace ground
 {
     public class Ground : MonoBehaviour
     {
-        public AudioClip footStepSFX;
+        public List<AudioClip> footStepSFXs;
+        private int idx;
+
+        private void Awake()
+        {
+            idx = 0;
+        }
 
         public AudioClip GetFootStep()
         {
-            return footStepSFX;
+            idx++;
+            idx %= footStepSFXs.Count;
+            return footStepSFXs[idx];
         }
     }
 }
