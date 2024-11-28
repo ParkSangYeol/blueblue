@@ -2,6 +2,7 @@ using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UI;
 
 namespace PlayerControl
 {
@@ -21,7 +22,8 @@ namespace PlayerControl
         private bool jumpScareTriggered = false;
         void Start()
         {
-            Cursor.lockState = CursorLockMode.Locked;
+            mouseSensitivity = PlayerPrefs.GetFloat("Sensitivity", 100f);
+            SettingUIManager.Instance.onSensitivityValueChanged.AddListener(SetSensitivity);
             //rb = playerHead.GetComponent<Rigidbody>();
         }
 
@@ -43,6 +45,11 @@ namespace PlayerControl
                 //rb.MoveRotation(rb.rotation * yRotation);
                 playerHead.Rotate(Vector3.up * mouseX);
             }
+        }
+
+        private void SetSensitivity()
+        {
+            mouseSensitivity = SettingUIManager.Instance.GetSensitivity();
         }
 
         public void WhenJumpScareTriggered()
