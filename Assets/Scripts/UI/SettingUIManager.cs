@@ -10,9 +10,9 @@ namespace UI
     public class SettingUIManager : Singleton<SettingUIManager>
     {
         [Header("UI Canvas")] 
-        [Tooltip("���� UI ĵ����")][SerializeField]private GameObject settingUICanvas;
+        [Tooltip("설정 UI 캔버스")][SerializeField]private GameObject settingUICanvas;
         public GameObject SettingUICanvas => settingUICanvas;
-        [Tooltip("���� Ȱ��ȭ ��ư")] public KeyCode settingKeyCode = KeyCode.Escape;
+        [Tooltip("설정 키")] public KeyCode settingKeyCode = KeyCode.Escape;
 
         [Header("BGM")] [SerializeField] private Slider bgmSlider;
         [Header("SFX")] [SerializeField] private Slider sfxSlider;
