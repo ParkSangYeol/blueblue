@@ -39,10 +39,7 @@ namespace UI
         {
             if (Input.GetKeyDown(settingKeyCode))
             {
-                settingUICanvas.SetActive(!settingUICanvas.activeSelf);
-                Cursor.visible = settingUICanvas.activeSelf;
-                if (settingUICanvas.activeSelf) Cursor.lockState = CursorLockMode.None;
-                else Cursor.lockState = CursorLockMode.Locked;
+                SwitchCanvas();
             }
         }
 
@@ -112,7 +109,7 @@ namespace UI
 
         private void OnClickContinueBtn()
         {
-            settingUICanvas.SetActive(!settingUICanvas.activeSelf);
+            SwitchCanvas();
         }
 
         private void OnClickExitBtn()
@@ -126,5 +123,13 @@ namespace UI
 
         #endregion
 
+
+        private void SwitchCanvas()
+        {
+            settingUICanvas.SetActive(!settingUICanvas.activeSelf);
+            Cursor.visible = settingUICanvas.activeSelf;
+            if (settingUICanvas.activeSelf) Cursor.lockState = CursorLockMode.None;
+            else Cursor.lockState = CursorLockMode.Locked;
+        }
     }
 }
