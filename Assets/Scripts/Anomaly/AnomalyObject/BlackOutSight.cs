@@ -9,39 +9,42 @@ namespace Anomaly.Object
 {
     public class BlackOutSight : AnomalyObject
     {
-        public float startDelay = 5f;
-        public float blackoutTime = 2f;
+        public float blackoutTime = 4f;
         public Volume volumeProfile;
+        private bool isTriggered = false;
 
-        private ColorAdjustments filter;
+        private Vignette vignette;
 
         void Start()
         {
             volumeProfile = FindObjectOfType<Volume>();
-            if(volumeProfile.sharedProfile.TryGet(out filter))
+            if(volumeProfile.sharedProfile.TryGet(out vignette))
             {
-                filter.postExposure.value = 0f;
+                vignette.intensity.value = 0.2f;
             }
             base.Start();
         }
         public override void ResetProblem()
         {
-            filter.postExposure.value = 0f;
+            StartCoroutine(ChangeVignette(0.5f, 0.2f));
+            isTriggered = false;
+            GetComponentInChildren<EndBlackOut1>().ResetAnomaly();
         }
 
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Player") && !isTriggered)
+            {
+                isTriggered = true;
+                ActivePhenomenon();
+            }
+        }
         protected override void ActivePhenomenon()
         {
-            StartCoroutine(Blackout(0f, -10f));
+            StartCoroutine(ChangeVignette(0.2f, 0.5f));
         }
 
-        IEnumerator Blackout(float _start, float _end)
-        {
-            yield return new WaitForSeconds(startDelay);
-            yield return StartCoroutine(ChangeExposure(_start, _end));
-            yield return new WaitForSeconds(0.5f);
-            yield return StartCoroutine(ChangeExposure(_end, _start));
-        }
-        IEnumerator ChangeExposure(float _start, float _end)
+        IEnumerator ChangeVignette(float _start, float _end)
         {
             Debug.Log("Start");
             float timeValue = 0f;
@@ -50,10 +53,10 @@ namespace Anomaly.Object
                 timeValue += Time.deltaTime;
                 float t = timeValue / blackoutTime;
 
-                filter.postExposure.value = Mathf.Lerp(_start, _end, t);
+                vignette.intensity.value = Mathf.Lerp(_start, _end, t);
                 yield return null;
             }
-            filter.postExposure.value = _end;
+            vignette.intensity.value = _end;
         }
     }
 }
