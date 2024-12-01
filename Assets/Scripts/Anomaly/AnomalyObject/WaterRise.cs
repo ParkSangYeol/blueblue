@@ -7,9 +7,12 @@ namespace Anomaly.Object
    public class WaterRise : AnomalyObject
    {
       
-      public GameObject waterBlock;
+      [SerializeField] private GameObject waterBlock;
+      [SerializeField] private SFXPlayer sfxPlayer;
+      [SerializeField] private AudioClip waterSFX;
       
-      [Tooltip("올라오는 속도 : 1.0 ~ 10.0 설정")]
+      
+      [Tooltip("올라오는 속도 : 1.0 ~ 15.0 설정")]
       public float waterRiseSpeed;
 
       private void Start()
@@ -29,17 +32,18 @@ namespace Anomaly.Object
       protected override void ActivePhenomenon()
       {
          waterBlock.SetActive(true);
+         SoundManager.Instance.PlaySFX(sfxPlayer, waterSFX, false);
          StartCoroutine(RiseWater());
       }
 
       private IEnumerator RiseWater()
       {
-         while (waterBlock.transform.localPosition.y < 80f) 
+         while (waterBlock.transform.localPosition.y < 52f) 
          {
             waterBlock.transform.localPosition += new Vector3(0, waterRiseSpeed * Time.deltaTime, 0);
             yield return null;  
          }
-         waterBlock.SetActive(false);
+        //waterBlock.SetActive(false);
       }
 
       public override void ResetProblem()
