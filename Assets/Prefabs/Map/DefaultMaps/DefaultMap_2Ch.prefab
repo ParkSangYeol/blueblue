@@ -5046,10 +5046,6 @@ PrefabInstance:
       insertIndex: 23
       addedObject: {fileID: 1482865440802712914}
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7136095841892199931, guid: d8aa47eb051537e4db8936f462df99ac,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7577214767646815652}
     - targetCorrespondingSourceObject: {fileID: 8756124040915700317, guid: d8aa47eb051537e4db8936f462df99ac,
         type: 3}
       insertIndex: -1
@@ -6086,31 +6082,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2336984538732428198, guid: 81dca0c9ab4e0ce45b8fb34bfbffa46a, type: 3}
---- !u!1 &8241887383551660762 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7136095841892199931, guid: d8aa47eb051537e4db8936f462df99ac,
-    type: 3}
-  m_PrefabInstance: {fileID: 1254694175165562657}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7577214767646815652
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8241887383551660762}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e12721a99fbe6a645bd49a34ab5a9952, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  loadTransform: {fileID: 1515745733249756253}
-  leftDoor: {fileID: 7345838790526005322}
-  rightDoor: {fileID: 1468259365570852050}
-  choiceTrueCollider: {fileID: 84826269734047736}
-  choiceFalseCollider: {fileID: 351199411563239294}
-  unloadCollider: {fileID: 3445906345093018809}
-  problem: {fileID: 0}
 --- !u!1 &8908765555635349734 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7695484795305842631, guid: d8aa47eb051537e4db8936f462df99ac,
