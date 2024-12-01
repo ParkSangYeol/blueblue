@@ -24,13 +24,21 @@ namespace Anomaly
         public void OpenDoor()
         {
             Debug.Log("문 열기");
-            // animator.SetTrigger(Open);
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("door_open"))
+            {
+                return;
+            }
+            animator.SetTrigger(Open);
         }
 
         public void CloseDoor()
         {
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("door_close"))
+            {
+                return;
+            }
             Debug.Log("문 닫기");
-            // animator.SetTrigger(Close);
+            animator.SetTrigger(Close);
         }
     }
 

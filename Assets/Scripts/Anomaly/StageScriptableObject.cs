@@ -22,7 +22,7 @@ namespace Anomaly
         public void MakeProblemsList()
         {
             problems = new List<AnomalyScriptableObject>();
-            string[] guids = AssetDatabase.FindAssets("t:ProblemScriptableObject");
+            string[] guids = AssetDatabase.FindAssets("t:AnomalyScriptableObject");
             foreach (var guid in guids)
             {
                 string path = AssetDatabase.GUIDToAssetPath(guid);

@@ -10,8 +10,7 @@ namespace Anomaly
     {
         public Transform loadTransform;
 
-        public DoorController leftDoor;
-        public DoorController rightDoor;
+        public DoorController mainDoor;
 
         public NextAnomalyChoicer choiceTrueCollider;
         public NextAnomalyChoicer choiceFalseCollider;

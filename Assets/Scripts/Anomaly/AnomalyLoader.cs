@@ -34,7 +34,7 @@ namespace Anomaly
             minAppearance = 0;
             stageIdx = 0;
             stageFloor = 1;
-            sequenceProblem = 0;
+            sequenceProblem = 1;
             currentMapIdx = -1;
             int maxNumOfProblems = 0;
             for (int i = 0; i < stages.Count; i++)
@@ -60,6 +60,9 @@ namespace Anomaly
             bool isAnswer = currentMapIdx == -1 ? !playerChoice : playerChoice;
             if (isAnswer)
             {
+#if UNITY_EDITOR
+                Debug.Log("정답!");
+#endif
                 //정답을 맞춘경우
                 if (currentMapIdx != -1)
                 {
@@ -69,15 +72,27 @@ namespace Anomaly
                 {
                     // 다음 스테이지 로드
                     minAppearance = 0;
+                    stageFloor = 1;
+                    // 기본 맵 로드
                     if (++stageIdx == stages.Count)
                     {
                         // TODO 엔딩 출력
+#if UNITY_EDITOR
+                        Debug.Log("게임 클리어!");
+#endif
+                        return;
                     }
+                    currentMapIdx = -1;
+                    LoadProblem(stages[stageIdx].defaultPrefab, playerChoice);
+                    return;
                 }
             }
             else
             {
                 // 틀린 경우
+#if UNITY_EDITOR
+                Debug.Log("오답...");
+#endif
                 if (stageFloor > 1)
                 {
                     stageFloor = 1;
@@ -88,7 +103,11 @@ namespace Anomaly
                 }
                 else if (stageFloor == 0)
                 {
-                    // TODO 배드엔딩 출력
+                    
+#if UNITY_EDITOR
+                    Debug.Log("게임 오버...");
+#endif
+                    return;
                 }
             }
 
@@ -132,15 +151,7 @@ namespace Anomaly
             nextProblemMap.choiceTrueCollider.loader = nextProblemMap.choiceFalseCollider.loader = nextProblemMap.unloadCollider.loader = this;
             
             // 문 여는 애니메이션 실행.
-            if (isLeft)
-            {
-                currentProblemMap.leftDoor.OpenDoor();
-            }
-            else
-            {
-                currentProblemMap.rightDoor.OpenDoor();
-            }
-
+            currentProblemMap.mainDoor.OpenDoor();
         }
         
         public void LoadProblem(GameObject problemMap, bool isLeft)
@@ -160,14 +171,7 @@ namespace Anomaly
             nextProblemMap.choiceTrueCollider.loader = nextProblemMap.choiceFalseCollider.loader = nextProblemMap.unloadCollider.loader = this;
             
             // 문 여는 애니메이션 실행.
-            if (isLeft)
-            {
-                currentProblemMap.leftDoor.OpenDoor();
-            }
-            else
-            {
-                currentProblemMap.rightDoor.OpenDoor();
-            }
+            currentProblemMap.mainDoor.OpenDoor();
         }
 
         public void ResetGame()
@@ -189,16 +193,8 @@ namespace Anomaly
             }
             
             // 문을 닫는 애니메이션 실행
-            /*
-            if (isLeft)
-            {
-                currentProblemMap.leftDoor.CloseDoor();
-            }
-            else
-            {
-                currentProblemMap.rightDoor.CloseDoor();
-            }
-            */
+            currentProblemMap.mainDoor.CloseDoor();
+          
             
             // 필요 없어진 이상현상 오브젝트 제거.
             if (beforeProblemMap != null)

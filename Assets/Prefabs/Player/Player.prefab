@@ -800,6 +800,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 378470449969774100}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 14d42edfcdefc304f901d8554bd5e48a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3184302063109430013}
   m_SourcePrefab: {fileID: 100100000, guid: 14d42edfcdefc304f901d8554bd5e48a, type: 3}
 --- !u!95 &1429220778310951507 stripped
 Animator:
@@ -853,6 +857,7 @@ MonoBehaviour:
   groundCheckAngle: 45
   animator: {fileID: 1429220778310951507}
   groundRay: 0.3
+  maxFootStepTimer: 1
 --- !u!143 &1372098457924883631
 CharacterController:
   m_ObjectHideFlags: 0
@@ -916,6 +921,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTriggered: 0
   cameraRotated: {fileID: 8609587097316401901}
+--- !u!114 &3184302063109430013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5656064566805226131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6318e2871646b346878a685817cc3ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Persistent: 0
+  mainCamera: {fileID: 0}
+  startInteractKeyCode: 0
+  stopInteractKeyCode: 0
+  interactionLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  _interactDistance: 0
+  onStartInteracting:
+    m_PersistentCalls:
+      m_Calls: []
+  onStopInteracting:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &5830830288893823920 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1320764503449572466, guid: 14d42edfcdefc304f901d8554bd5e48a,
