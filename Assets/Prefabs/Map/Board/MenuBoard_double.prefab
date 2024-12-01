@@ -314,7 +314,7 @@ GameObject:
   - component: {fileID: 22299214}
   - component: {fileID: 11421814}
   m_Layer: 5
-  m_Name: Menu
+  m_Name: Desc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -380,9 +380,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\n1. \uC774\uC0C1\uD604\uC0C1\uC774 \uC788\uB2E4\uBA74, \uC67C\uCABD \uBB38\uC744
+  m_Text: "1. \uC774\uC0C1\uD604\uC0C1\uC774 \uC788\uB2E4\uBA74, \uC67C\uCABD \uBB38\uC744
     \uC120\uD0DD\uD558\uC138\uC694.\n2. \uC774\uC0C1\uD604\uC0C1\uC774 \uC5C6\uB2E4\uBA74,
-    \uC624\uB978\uCABD \uBB38\uC744 \uC120\uD0DD\uD558\uC138\uC694."
+    \uC624\uB978\uCABD \uBB38\uC744 \uC120\uD0DD\uD558\uC138\uC694.\n3. \uCC55\uD130
+    \uBCC4, \uCCAB \uCE35\uC740 \uC774\uC0C1 \uD604\uC0C1\uC774 \uC5C6\uC2B5\uB2C8\uB2E4."
 --- !u!1 &180030
 GameObject:
   m_ObjectHideFlags: 0
@@ -934,7 +935,7 @@ GameObject:
   - component: {fileID: 222198121516871752}
   - component: {fileID: 114373427060449632}
   m_Layer: 5
-  m_Name: Menu
+  m_Name: Desc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1000,6 +1001,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\n1. \uC774\uC0C1\uD604\uC0C1\uC774 \uC788\uB2E4\uBA74, \uC67C\uCABD \uBB38\uC744
+  m_Text: "1. \uC774\uC0C1\uD604\uC0C1\uC774 \uC788\uB2E4\uBA74, \uC67C\uCABD \uBB38\uC744
     \uC120\uD0DD\uD558\uC138\uC694.\n2. \uC774\uC0C1\uD604\uC0C1\uC774 \uC5C6\uB2E4\uBA74,
-    \uC624\uB978\uCABD \uBB38\uC744 \uC120\uD0DD\uD558\uC138\uC694."
+    \uC624\uB978\uCABD \uBB38\uC744 \uC120\uD0DD\uD558\uC138\uC694.\n3. \uCC55\uD130
+    \uBCC4, \uCCAB \uCE35\uC740 \uC774\uC0C1 \uD604\uC0C1\uC774 \uC5C6\uC2B5\uB2C8\uB2E4."
