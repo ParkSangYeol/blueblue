@@ -136,11 +136,13 @@ namespace Anomaly
         
         public void LoadProblem(AnomalyScriptableObject problemData, bool isLeft)
         {
+#if UNITY_EDITOR
             if (!EditorApplication.isPlaying)
             {
                 Debug.Log("현재 게임 뷰가 실행 상태가 아닙니다. 실행 상태에서 이 함수를 호출해 주세요.");
                 return;
             }
+#endif
             
             // 이상현상 생성. (혹은 가져오기)
             Transform spawnTransform = currentProblemMap.loadTransform;
@@ -156,12 +158,13 @@ namespace Anomaly
         
         public void LoadProblem(GameObject problemMap, bool isLeft)
         {
+#if UNITY_EDITOR
             if (!EditorApplication.isPlaying)
             {
                 Debug.Log("현재 게임 뷰가 실행 상태가 아닙니다. 실행 상태에서 이 함수를 호출해 주세요.");
                 return;
             }
-            
+#endif
             // 이상현상 생성. (혹은 가져오기)
             Transform spawnTransform = currentProblemMap.loadTransform;
             GameObject problemMapObject = Instantiate(problemMap, spawnTransform.position, spawnTransform.rotation);
@@ -182,11 +185,13 @@ namespace Anomaly
         [Button]
         public void UnloadProblem()
         {
+#if UNITY_EDITOR
             if (!EditorApplication.isPlaying)
             {
                 Debug.Log("현재 게임 뷰가 실행 상태가 아닙니다. 실행 상태에서 이 함수를 호출해 주세요.");
                 return;
             }
+#endif
             if (!isLoadNewMap)
             {
                 return;

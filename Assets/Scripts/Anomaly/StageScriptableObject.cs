@@ -18,6 +18,7 @@ namespace Anomaly
         public GameObject defaultPrefab;
         public List<AnomalyScriptableObject> problems;
         
+#if UNITY_EDITOR
         [Button]
         public void MakeProblemsList()
         {
@@ -33,5 +34,6 @@ namespace Anomaly
                 }
             }
         }
+#endif
     }
 }
