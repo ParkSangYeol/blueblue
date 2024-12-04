@@ -165,6 +165,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 79416678839418929}
+  openSFX: {fileID: 8300000, guid: e38a87d70e96b5848a3830fbd531f540, type: 3}
+  closeSFX: {fileID: 8300000, guid: c64302fde573eb84b81f0bc6eb61b00b, type: 3}
 --- !u!1 &8337653152637833833 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5133023261384960553, guid: 94d4935479cdfd142991c8298ce8b0ae,
