@@ -32,7 +32,7 @@ namespace Anomaly.Object
       protected override void ActivePhenomenon()
       {
          waterBlock.SetActive(true);
-         SoundManager.Instance.PlaySFX(sfxPlayer, waterSFX, false);
+         SoundManager.Instance.PlaySFX(sfxPlayer, waterSFX, true);
          StartCoroutine(RiseWater());
       }
 

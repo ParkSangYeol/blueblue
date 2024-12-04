@@ -326,7 +326,7 @@ MonoBehaviour:
   activeOnStart: 0
   waterBlock: {fileID: 611950928767984737}
   sfxPlayer: {fileID: 6372228710669776148}
-  waterSFX: {fileID: 8300000, guid: 9ef6f1a914ae88746a0b1deaabedd1e2, type: 3}
+  waterSFX: {fileID: 8300000, guid: 06a3a09af047e8c4eb16acf1e38144a6, type: 3}
   waterRiseSpeed: 13
 --- !u!1 &8481895064054102599
 GameObject:
@@ -582,6 +582,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549253774142331355, guid: 258b94ba19e99274ebaba180b90f3e96,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 5549253774142331355, guid: 258b94ba19e99274ebaba180b90f3e96,
         type: 3}
