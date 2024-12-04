@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Anomaly.Object;
+using TMPro;
 using UnityEngine;
 
 namespace Anomaly
@@ -18,6 +19,8 @@ namespace Anomaly
         
         public AnomalyObject problem;
 
+        public TMP_Text floorText;
+        
         public void ResetProblem()
         {
             // 이상 현상을 리셋
