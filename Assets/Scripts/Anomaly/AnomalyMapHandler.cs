@@ -21,6 +21,10 @@ namespace Anomaly
         public void ResetProblem()
         {
             // 이상 현상을 리셋
+            if (problem != null)
+            {
+                problem.ResetProblem();
+            }
             Debug.Log("이상 현상 리셋");
         }
     }
