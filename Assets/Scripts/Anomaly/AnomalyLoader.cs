@@ -151,6 +151,7 @@ namespace Anomaly
             // 이상현상 리셋.
             nextProblemMap.ResetProblem();
             nextProblemMap.choiceTrueCollider.loader = nextProblemMap.choiceFalseCollider.loader = nextProblemMap.unloadCollider.loader = this;
+            nextProblemMap.floorText.text = stageFloor.ToString();
             
             // 문 여는 애니메이션 실행.
             currentProblemMap.mainDoor.OpenDoor();
@@ -172,6 +173,7 @@ namespace Anomaly
             // 이상현상 리셋.
             nextProblemMap.ResetProblem();
             nextProblemMap.choiceTrueCollider.loader = nextProblemMap.choiceFalseCollider.loader = nextProblemMap.unloadCollider.loader = this;
+            nextProblemMap.floorText.text = stageFloor.ToString();
             
             // 문 여는 애니메이션 실행.
             currentProblemMap.mainDoor.OpenDoor();
