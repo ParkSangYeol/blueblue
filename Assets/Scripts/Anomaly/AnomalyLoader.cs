@@ -209,6 +209,8 @@ namespace Anomaly
             
             beforeProblemMap = currentProblemMap;
             currentProblemMap = nextProblemMap;
+            
+            beforeProblemMap.ResetProblem();
             isLoadNewMap = false;
         }
         
