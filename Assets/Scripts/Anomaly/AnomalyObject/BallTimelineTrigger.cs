@@ -17,7 +17,7 @@ namespace Anomaly.Object
         private bool isTrigger = false;
         private Vector3 initialPosition;
         private Quaternion initialRotation;
-
+        public AudioClip ballSFX;
 
         public override void ResetProblem()
         {
@@ -36,6 +36,10 @@ namespace Anomaly.Object
         {
             if (rb != null) rb.isKinematic = true;
             pd.Play();
+            if(ballSFX != null)
+            {
+                SoundManager.Instance.PlaySFX(ballSFX);
+            }
             if (rb != null) StartCoroutine(WaitEndTimeline());
         }
 
