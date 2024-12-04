@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
@@ -23,6 +24,9 @@ namespace Anomaly
         private int stageFloor;
         private int sequenceProblem;
         private bool isLoadNewMap = false;
+
+        public UnityEvent onClearGame;
+        public UnityEvent onFailGame;
 
         private void Awake()
         {
@@ -80,6 +84,7 @@ namespace Anomaly
 #if UNITY_EDITOR
                         Debug.Log("게임 클리어!");
 #endif
+                        onClearGame.Invoke();
                         return;
                     }
                     currentMapIdx = -1;
@@ -107,6 +112,7 @@ namespace Anomaly
 #if UNITY_EDITOR
                     Debug.Log("게임 오버...");
 #endif
+                    onFailGame.Invoke();
                     return;
                 }
             }
@@ -220,7 +226,7 @@ namespace Anomaly
         {
             // 현재 데이터 중 등장하지 않은 랜덤한 값 출력.
             List<int> idxs = new List<int>();
-            int tempMinAppearance = 987654321;
+            int tempMinAppearance = minAppearance;
             int minCount = 0;
             for (int i = 0; i < stages[stageIdx].problems.Count; i++)
             {
@@ -239,8 +245,9 @@ namespace Anomaly
                     idxs.Add(i);
                 }
             }
-            minAppearance = minCount == 1? tempMinAppearance +1 : tempMinAppearance;
+            minAppearance = minCount == stages[stageIdx].problems.Count? tempMinAppearance + 1 : tempMinAppearance;
             int randIdx = Random.Range(0, idxs.Count);
+            Debug.Log("[AnomalyLoader] " + idxs.Count + ", " + randIdx);
             currentMapIdx = idxs[randIdx];
             AnomalyScriptableObject returnData = stages[stageIdx].problems[idxs[randIdx]];
             return returnData;
