@@ -66,6 +66,7 @@ namespace Utility
         {
             items.Clear();
             lastIdx = 0;
+            randomIdx = -1;
         }
         
         private void Swap(int idxA, int idxB)
