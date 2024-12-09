@@ -14,14 +14,25 @@ namespace UI
         public GameObject SettingUICanvas => settingUICanvas;
         [Tooltip("설정 키")] public KeyCode settingKeyCode = KeyCode.Escape;
 
+        [Space(3)]
         [Header("BGM")] [SerializeField] private Slider bgmSlider;
         [Header("SFX")] [SerializeField] private Slider sfxSlider;
-        [Header("Sensitivity")] 
-        public UnityEvent onSensitivityValueChanged;
-        [SerializeField] private Slider mouseSlider;
-        [SerializeField] private float curSensitivity;
-        [SerializeField]private float minSensitivity = 50f;
-        [SerializeField]private float maxSensitivity = 150f;
+
+        [Space(3)]
+        [Header("Sensitivity")]
+        [SerializeField] private Slider mouseHorizontalSlider;
+        [HideInInspector] public UnityEvent<float> onHorizontalSensitivityValueChanged;
+        [SerializeField] private float curHorizontalSensitivity;
+        [SerializeField] private float minHorizontalSensitivity = 20f;
+        [SerializeField] private float maxHorizontalSensitivity = 200f;
+
+        [SerializeField] private Slider mouseVerticalSlider;
+        [HideInInspector]public UnityEvent<float> onVerticalSensitivityValueChanged;
+        [SerializeField] private float curVerticalSensitivity;
+        [SerializeField] private float minVerticalSensitivity = 20f;
+        [SerializeField] private float maxVerticalSensitivity = 200f;
+
+        [Space(3)]
         [Header("Button")] 
         [SerializeField] private Button continueBtn;
         [SerializeField] private Button exitBtn;
@@ -59,15 +70,20 @@ namespace UI
             var sfxVolume = SoundManager.Instance.SFXMasterVolume;
             sfxSlider.value = sfxVolume;
             sfxSlider.onValueChanged.AddListener(OnSFXValueChanged);
-            #endregion   
-            
-            #region Mouse
+            #endregion
 
-            curSensitivity = PlayerPrefs.GetFloat("Sensitivity", 100f);
-            mouseSlider.value = curSensitivity;
-            mouseSlider.maxValue = maxSensitivity;
-            mouseSlider.minValue = minSensitivity;
-            mouseSlider.onValueChanged.AddListener(OnSensitivityValueChanged);
+            #region Mouse
+            mouseHorizontalSlider.maxValue = maxHorizontalSensitivity;
+            mouseHorizontalSlider.minValue = minHorizontalSensitivity;
+            curHorizontalSensitivity = PlayerPrefs.GetFloat("HorizontalSensitivity", 110);
+            mouseHorizontalSlider.value = curHorizontalSensitivity;
+            mouseHorizontalSlider.onValueChanged.AddListener(OnHorizontalSensitivityValueChanged);
+
+            mouseVerticalSlider.maxValue = maxVerticalSensitivity;
+            mouseVerticalSlider.minValue = minVerticalSensitivity;
+            curVerticalSensitivity = PlayerPrefs.GetFloat("VerticalSensitivity", 110);
+            mouseVerticalSlider.value = curVerticalSensitivity;
+            mouseVerticalSlider.onValueChanged.AddListener(OnVerticalSensitivityValueChanged);
             
             #endregion
             
@@ -91,16 +107,18 @@ namespace UI
             SoundManager.Instance.ChangeSFXVolume(volume);
         }
 
-        private void OnSensitivityValueChanged(float value)
+        private void OnVerticalSensitivityValueChanged(float value)
         {
-            curSensitivity = value;
-            PlayerPrefs.SetFloat("Sensitivity", curSensitivity);
-            onSensitivityValueChanged.Invoke();
+            curVerticalSensitivity = value;
+            PlayerPrefs.SetFloat("VerticalSensitivity", curVerticalSensitivity);
+            onVerticalSensitivityValueChanged.Invoke(value);
         }
-
-        public float GetSensitivity()
+        
+        private void OnHorizontalSensitivityValueChanged(float value)
         {
-            return curSensitivity;
+            curHorizontalSensitivity = value;
+            PlayerPrefs.SetFloat("HorizontalSensitivity", curHorizontalSensitivity);
+            onHorizontalSensitivityValueChanged.Invoke(value);
         }
         
         #endregion
