@@ -14,6 +14,8 @@ namespace PlayerControl
         //private Rigidbody rb;
         [InfoBox("마우스 감도")]
         public float mouseSensitivity = 100f;
+        public float mouseSensitivityVertical = 100f;
+        public float mouseSensitivityHorizontal = 100f;
         private float xRotation = 0f;
         [InfoBox("마우스 상하 조절 제한치 조절")]
         [MinMaxSlider(-180, 180,true)]
@@ -50,6 +52,7 @@ namespace PlayerControl
         private void SetSensitivity()
         {
             mouseSensitivity = SettingUIManager.Instance.GetSensitivity();
+
         }
 
         public void WhenJumpScareTriggered()
