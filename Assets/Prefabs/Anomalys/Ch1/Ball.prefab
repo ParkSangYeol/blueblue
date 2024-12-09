@@ -69,6 +69,7 @@ MonoBehaviour:
   activeOnStart: 0
   pd: {fileID: 1664500892063250574}
   ball: {fileID: 3377622402409385088}
+  ballSFX: {fileID: 8300000, guid: b3f4a0446fa72684e840dea2413b0860, type: 3}
 --- !u!1001 &778161594643097328
 PrefabInstance:
   m_ObjectHideFlags: 0
