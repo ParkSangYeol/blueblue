@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using Utility;
 using Random = UnityEngine.Random;
 
 namespace Anomaly
@@ -17,13 +19,12 @@ namespace Anomaly
         public AnomalyMapHandler nextProblemMap;
         public List<StageScriptableObject> stages;
         public int stageThreshold;
-        private int[,] numOfAppearance; // [스테이지][문제 번호]의 등장 횟수 추적.
         private int currentMapIdx;
-        private int minAppearance;
         private int stageIdx;
         private int stageFloor;
         private int sequenceProblem;
         private bool isLoadNewMap = false;
+        private BalancedRandomSelector<int> randomSelector;
 
         public UnityEvent onClearGame;
         public UnityEvent onFailGame;
@@ -35,7 +36,6 @@ namespace Anomaly
                 stageThreshold = 4;
             }
 
-            minAppearance = 0;
             stageIdx = 0;
             stageFloor = 1;
             sequenceProblem = 1;
@@ -45,7 +45,12 @@ namespace Anomaly
             {
                 maxNumOfProblems= Math.Max(maxNumOfProblems, stages[i].problems.Count);
             }
-            numOfAppearance = new int[stages.Count, maxNumOfProblems];
+
+            randomSelector = new BalancedRandomSelector<int>();
+            for (int i = 0; i < stages[stageIdx].problems.Count; i++)
+            {
+                randomSelector.AddItem(i);
+            }
         }
         
         [Button]
@@ -70,12 +75,11 @@ namespace Anomaly
                 //정답을 맞춘경우
                 if (currentMapIdx != -1)
                 {
-                    numOfAppearance[stageIdx , currentMapIdx]++;
+                    randomSelector.RemoveRandomItem();
                 }
                 if (++stageFloor == stageThreshold)
                 {
                     // 다음 스테이지 로드
-                    minAppearance = 0;
                     stageFloor = 1;
                     // 기본 맵 로드
                     if (++stageIdx == stages.Count)
@@ -87,7 +91,15 @@ namespace Anomaly
                         onClearGame.Invoke();
                         return;
                     }
+
+                    randomSelector = new BalancedRandomSelector<int>();
+                    for (int i = 0; i < stages[stageIdx].problems.Count; i++)
+                    {
+                        randomSelector.AddItem(i);
+                    }
+                    
                     currentMapIdx = -1;
+                    sequenceProblem = 0;
                     LoadProblem(stages[stageIdx].defaultPrefab, playerChoice);
                     return;
                 }
@@ -225,32 +237,9 @@ namespace Anomaly
         private AnomalyScriptableObject GetRandomProblem()
         {
             // 현재 데이터 중 등장하지 않은 랜덤한 값 출력.
-            List<int> idxs = new List<int>();
-            int tempMinAppearance = minAppearance;
-            int minCount = 0;
-            for (int i = 0; i < stages[stageIdx].problems.Count; i++)
-            {
-                if (tempMinAppearance > numOfAppearance[stageIdx, i])
-                {
-                    tempMinAppearance = numOfAppearance[stageIdx, i];
-                    minCount = 0;
-                }
-                else if (tempMinAppearance == numOfAppearance[stageIdx, i])
-                {
-                    minCount++;
-                }
-                
-                if (numOfAppearance[stageIdx, i] <= minAppearance)
-                {
-                    idxs.Add(i);
-                }
-            }
-            minAppearance = minCount == stages[stageIdx].problems.Count? tempMinAppearance + 1 : tempMinAppearance;
-            int randIdx = Random.Range(0, idxs.Count);
-            Debug.Log("[AnomalyLoader] " + idxs.Count + ", " + randIdx);
-            currentMapIdx = idxs[randIdx];
-            AnomalyScriptableObject returnData = stages[stageIdx].problems[idxs[randIdx]];
-            return returnData;
+            int randomIdx = randomSelector.GetRandomItem();
+            currentMapIdx = randomIdx;
+            return stages[stageIdx].problems[randomIdx];
         }
     }
 
