@@ -12,9 +12,9 @@ namespace PlayerControl
         [DetailedInfoBox("카메라가 기생할 몸체", "몸에다 달지 말고, 캐릭터의 눈 부분에 연결하세요.")]
         public Transform playerHead;
         [InfoBox("마우스 감도")]
-        public float mouseSensitivity = 100f;
-        //public float mouseSensitivityVertical = 100f;
-        //public float mouseSensitivityHorizontal = 100f;
+        //public float mouseSensitivity = 100f;
+        public float mouseSensitivityVertical = 100f;
+        public float mouseSensitivityHorizontal = 100f;
         private float xRotation = 0f;
         [InfoBox("마우스 상하 조절 제한치 조절")]
         [MinMaxSlider(-180, 180,true)]
@@ -23,20 +23,20 @@ namespace PlayerControl
         private bool jumpScareTriggered = false;
         void Start()
         {
-            mouseSensitivity = PlayerPrefs.GetFloat("Sensitivity", 100f);
-            //mouseSensitivityHorizontal = PlayerPrefs.GetFloat("SensitivityX", 100f);
-            //mouseSensitivityVertical = PlayerPrefs.GetFloat("SensitivityY", 100f);
-            SettingUIManager.Instance.onSensitivityValueChanged.AddListener(SetSensitivity);
-            //SettingUIManager.Instance.onSensitivityValueChanged.AddListener(SetSensitivityX);
-            //SettingUIManager.Instance.onSensitivityValueChanged.AddListener(SetSensitivityY);
+            //mouseSensitivity = PlayerPrefs.GetFloat("Sensitivity", 100f);
+            mouseSensitivityHorizontal = PlayerPrefs.GetFloat("HorizontalSensitivity", 100f);
+            mouseSensitivityVertical = PlayerPrefs.GetFloat("VerticalSensitivity", 100f);
+            //SettingUIManager.Instance.onSensitivityValueChanged.AddListener(SetSensitivity);
+            SettingUIManager.Instance.onHorizontalSensitivityValueChanged.AddListener(SetHorizontalSensitivity);
+            SettingUIManager.Instance.onVerticalSensitivityValueChanged.AddListener(SetVerticalSensitivity);
         }
 
         void Update()
         {
-            float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-            //float mouseX = Input.GetAxis("Mouse X") * mouseSensitivityHorizontal * Time.deltaTime;
-            float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
-            //float mouseY = Input. GetAxis("Mouse Y") * mouseSensitivityVertical * Time.deltaTime;
+            //float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+            float mouseX = Input.GetAxis("Mouse X") * mouseSensitivityHorizontal * Time.deltaTime;
+            //float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+            float mouseY = Input. GetAxis("Mouse Y") * mouseSensitivityVertical * Time.deltaTime;
 
             xRotation -= mouseY;
             xRotation = Mathf.Clamp(xRotation, mouse_Up_Down_Restrict.x, mouse_Up_Down_Restrict.y);
@@ -48,11 +48,13 @@ namespace PlayerControl
             }
         }
 
-        private void SetSensitivity()
+        private void SetHorizontalSensitivity(float value)
         {
-            mouseSensitivity = SettingUIManager.Instance.GetSensitivity();
-            //mouseSensitivityHorizontal = SettingUIManager.Instance.GetSensitivityX();
-            //mouseSensitivityVertical = SettingUIManager.Instance.GetSensitivityY();
+            mouseSensitivityHorizontal = value;
+        }
+        private void SetVerticalSensitivity(float value)
+        {
+            mouseSensitivityHorizontal = value;
         }
 
         public void WhenJumpScareTriggered()
