@@ -2680,6 +2680,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: small2_low
       objectReference: {fileID: 0}
+    - target: {fileID: 939525232175906889, guid: 4c543cc3e86e10a48a389146b2fa42f6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 939525232175906889, guid: 4c543cc3e86e10a48a389146b2fa42f6,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 1754290648576047691, guid: 4c543cc3e86e10a48a389146b2fa42f6,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -4629,6 +4639,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: end_middle1_low
+      objectReference: {fileID: 0}
+    - target: {fileID: 5265515641456698862, guid: 3f3a7a1556f46a94d87a952e8292c59a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5265515641456698862, guid: 3f3a7a1556f46a94d87a952e8292c59a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 8693199894044823720, guid: 3f3a7a1556f46a94d87a952e8292c59a,
         type: 3}
@@ -7328,6 +7348,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: middle1_low
+      objectReference: {fileID: 0}
+    - target: {fileID: 1674690011556694933, guid: 946aa73837f53c544bda2fedab1e7eca,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1674690011556694933, guid: 946aa73837f53c544bda2fedab1e7eca,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
