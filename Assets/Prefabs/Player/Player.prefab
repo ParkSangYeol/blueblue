@@ -221,7 +221,8 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   playerHead: {fileID: 4987086145548007465}
-  mouseSensitivity: 100
+  mouseSensitivityVertical: 100
+  mouseSensitivityHorizontal: 100
   mouse_Up_Down_Restrict: {x: -90, y: 60}
 --- !u!114 &8065485003930478990
 MonoBehaviour:
@@ -857,7 +858,7 @@ MonoBehaviour:
   groundCheckAngle: 45
   animator: {fileID: 1429220778310951507}
   groundRay: 0.3
-  maxFootStepTimer: 1
+  maxFootStepTimer: 0.5
 --- !u!143 &1372098457924883631
 CharacterController:
   m_ObjectHideFlags: 0
@@ -940,6 +941,7 @@ MonoBehaviour:
   interactionLayer:
     serializedVersion: 2
     m_Bits: 0
+  hoverImage: {fileID: 0}
   _interactDistance: 0
   onStartInteracting:
     m_PersistentCalls:
