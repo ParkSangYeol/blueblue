@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Persistent: 1
-  masterMixer: {fileID: 24100000, guid: 77a9b2ed3085ac84fb8ee4d64dfc6665, type: 2}
+  masterMixer: {fileID: 24100000, guid: 985a021d0d8148548a34413bd64ea5be, type: 2}
   allMasterVolume: 1
   bgmMasterVolume: 1
   sfxMasterVolume: 1

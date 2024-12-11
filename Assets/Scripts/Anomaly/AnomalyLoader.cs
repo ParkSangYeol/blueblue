@@ -1,10 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using Utility;
 using Random = UnityEngine.Random;
 
 namespace Anomaly
@@ -16,13 +19,15 @@ namespace Anomaly
         public AnomalyMapHandler nextProblemMap;
         public List<StageScriptableObject> stages;
         public int stageThreshold;
-        private int[,] numOfAppearance; // [스테이지][문제 번호]의 등장 횟수 추적.
         private int currentMapIdx;
-        private int minAppearance;
         private int stageIdx;
         private int stageFloor;
         private int sequenceProblem;
         private bool isLoadNewMap = false;
+        private BalancedRandomSelector<int> randomSelector;
+
+        public UnityEvent onClearGame;
+        public UnityEvent onFailGame;
 
         private void Awake()
         {
@@ -31,17 +36,21 @@ namespace Anomaly
                 stageThreshold = 4;
             }
 
-            minAppearance = 0;
             stageIdx = 0;
             stageFloor = 1;
-            sequenceProblem = 0;
+            sequenceProblem = 1;
             currentMapIdx = -1;
             int maxNumOfProblems = 0;
             for (int i = 0; i < stages.Count; i++)
             {
                 maxNumOfProblems= Math.Max(maxNumOfProblems, stages[i].problems.Count);
             }
-            numOfAppearance = new int[stages.Count, maxNumOfProblems];
+
+            randomSelector = new BalancedRandomSelector<int>();
+            for (int i = 0; i < stages[stageIdx].problems.Count; i++)
+            {
+                randomSelector.AddItem(i);
+            }
         }
         
         [Button]
@@ -60,24 +69,47 @@ namespace Anomaly
             bool isAnswer = currentMapIdx == -1 ? !playerChoice : playerChoice;
             if (isAnswer)
             {
+#if UNITY_EDITOR
+                Debug.Log("정답!");
+#endif
                 //정답을 맞춘경우
                 if (currentMapIdx != -1)
                 {
-                    numOfAppearance[stageIdx , currentMapIdx]++;
+                    randomSelector.RemoveRandomItem();
                 }
                 if (++stageFloor == stageThreshold)
                 {
                     // 다음 스테이지 로드
-                    minAppearance = 0;
+                    stageFloor = 1;
+                    // 기본 맵 로드
                     if (++stageIdx == stages.Count)
                     {
                         // TODO 엔딩 출력
+#if UNITY_EDITOR
+                        Debug.Log("게임 클리어!");
+#endif
+                        onClearGame.Invoke();
+                        return;
                     }
+
+                    randomSelector = new BalancedRandomSelector<int>();
+                    for (int i = 0; i < stages[stageIdx].problems.Count; i++)
+                    {
+                        randomSelector.AddItem(i);
+                    }
+                    
+                    currentMapIdx = -1;
+                    sequenceProblem = 0;
+                    LoadProblem(stages[stageIdx].defaultPrefab, playerChoice);
+                    return;
                 }
             }
             else
             {
                 // 틀린 경우
+#if UNITY_EDITOR
+                Debug.Log("오답...");
+#endif
                 if (stageFloor > 1)
                 {
                     stageFloor = 1;
@@ -88,7 +120,12 @@ namespace Anomaly
                 }
                 else if (stageFloor == 0)
                 {
-                    // TODO 배드엔딩 출력
+                    
+#if UNITY_EDITOR
+                    Debug.Log("게임 오버...");
+#endif
+                    onFailGame.Invoke();
+                    return;
                 }
             }
 
@@ -117,11 +154,13 @@ namespace Anomaly
         
         public void LoadProblem(AnomalyScriptableObject problemData, bool isLeft)
         {
+#if UNITY_EDITOR
             if (!EditorApplication.isPlaying)
             {
                 Debug.Log("현재 게임 뷰가 실행 상태가 아닙니다. 실행 상태에서 이 함수를 호출해 주세요.");
                 return;
             }
+#endif
             
             // 이상현상 생성. (혹은 가져오기)
             Transform spawnTransform = currentProblemMap.loadTransform;
@@ -130,27 +169,21 @@ namespace Anomaly
             // 이상현상 리셋.
             nextProblemMap.ResetProblem();
             nextProblemMap.choiceTrueCollider.loader = nextProblemMap.choiceFalseCollider.loader = nextProblemMap.unloadCollider.loader = this;
+            nextProblemMap.floorText.text = stageFloor.ToString();
             
             // 문 여는 애니메이션 실행.
-            if (isLeft)
-            {
-                currentProblemMap.leftDoor.OpenDoor();
-            }
-            else
-            {
-                currentProblemMap.rightDoor.OpenDoor();
-            }
-
+            currentProblemMap.mainDoor.OpenDoor();
         }
         
         public void LoadProblem(GameObject problemMap, bool isLeft)
         {
+#if UNITY_EDITOR
             if (!EditorApplication.isPlaying)
             {
                 Debug.Log("현재 게임 뷰가 실행 상태가 아닙니다. 실행 상태에서 이 함수를 호출해 주세요.");
                 return;
             }
-            
+#endif
             // 이상현상 생성. (혹은 가져오기)
             Transform spawnTransform = currentProblemMap.loadTransform;
             GameObject problemMapObject = Instantiate(problemMap, spawnTransform.position, spawnTransform.rotation);
@@ -158,16 +191,10 @@ namespace Anomaly
             // 이상현상 리셋.
             nextProblemMap.ResetProblem();
             nextProblemMap.choiceTrueCollider.loader = nextProblemMap.choiceFalseCollider.loader = nextProblemMap.unloadCollider.loader = this;
+            nextProblemMap.floorText.text = stageFloor.ToString();
             
             // 문 여는 애니메이션 실행.
-            if (isLeft)
-            {
-                currentProblemMap.leftDoor.OpenDoor();
-            }
-            else
-            {
-                currentProblemMap.rightDoor.OpenDoor();
-            }
+            currentProblemMap.mainDoor.OpenDoor();
         }
 
         public void ResetGame()
@@ -178,27 +205,21 @@ namespace Anomaly
         [Button]
         public void UnloadProblem()
         {
+#if UNITY_EDITOR
             if (!EditorApplication.isPlaying)
             {
                 Debug.Log("현재 게임 뷰가 실행 상태가 아닙니다. 실행 상태에서 이 함수를 호출해 주세요.");
                 return;
             }
+#endif
             if (!isLoadNewMap)
             {
                 return;
             }
             
             // 문을 닫는 애니메이션 실행
-            /*
-            if (isLeft)
-            {
-                currentProblemMap.leftDoor.CloseDoor();
-            }
-            else
-            {
-                currentProblemMap.rightDoor.CloseDoor();
-            }
-            */
+            currentProblemMap.mainDoor.CloseDoor();
+          
             
             // 필요 없어진 이상현상 오브젝트 제거.
             if (beforeProblemMap != null)
@@ -208,37 +229,17 @@ namespace Anomaly
             
             beforeProblemMap = currentProblemMap;
             currentProblemMap = nextProblemMap;
+            
+            beforeProblemMap.ResetProblem();
             isLoadNewMap = false;
         }
         
         private AnomalyScriptableObject GetRandomProblem()
         {
             // 현재 데이터 중 등장하지 않은 랜덤한 값 출력.
-            List<int> idxs = new List<int>();
-            int tempMinAppearance = 987654321;
-            int minCount = 0;
-            for (int i = 0; i < stages[stageIdx].problems.Count; i++)
-            {
-                if (tempMinAppearance > numOfAppearance[stageIdx, i])
-                {
-                    tempMinAppearance = numOfAppearance[stageIdx, i];
-                    minCount = 0;
-                }
-                else if (tempMinAppearance == numOfAppearance[stageIdx, i])
-                {
-                    minCount++;
-                }
-                
-                if (numOfAppearance[stageIdx, i] <= minAppearance)
-                {
-                    idxs.Add(i);
-                }
-            }
-            minAppearance = minCount == 1? tempMinAppearance +1 : tempMinAppearance;
-            int randIdx = Random.Range(0, idxs.Count);
-            currentMapIdx = idxs[randIdx];
-            AnomalyScriptableObject returnData = stages[stageIdx].problems[idxs[randIdx]];
-            return returnData;
+            int randomIdx = randomSelector.GetRandomItem();
+            currentMapIdx = randomIdx;
+            return stages[stageIdx].problems[randomIdx];
         }
     }
 

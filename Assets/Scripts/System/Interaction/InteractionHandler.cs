@@ -4,6 +4,7 @@ using com.kleberswf.lib.core;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace System.Interaction
 {
@@ -24,6 +25,9 @@ namespace System.Interaction
         private LayerMask interactionLayer;
         private IInteractable currentInteractable;
 
+        [SerializeField] 
+        private Image hoverImage;
+        
         [InfoBox("상호작용이 일어나는 거리는 0보다 작을 경우 4로 고정.")]
         [SerializeField]
         private float _interactDistance;
@@ -43,15 +47,24 @@ namespace System.Interaction
 
         private void Update()
         {
-            if (Input.GetKeyDown(startInteractKeyCode))
+            GetInteractableObject();
+            if (currentInteractable != null)
             {
-                GetInteractableObject();
-                StartInteract();
+                hoverImage.enabled = true;
+                if (Input.GetKeyDown(startInteractKeyCode))
+                {
+                    StartInteract();
+                }
+                else if (Input.GetKeyDown(stopInteractKeyCode))
+                {
+                    StopInteract();
+                }
             }
-            else if (Input.GetKeyDown(stopInteractKeyCode))
+            else
             {
-                StopInteract();
+                hoverImage.enabled = false;
             }
+            
             Debug.DrawLine(mainCamera.transform.position, mainCamera.transform.position + mainCamera.transform.forward * interactDistance, Color.red);
         }
 

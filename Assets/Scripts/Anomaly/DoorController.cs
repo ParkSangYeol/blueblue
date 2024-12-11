@@ -13,6 +13,11 @@ namespace Anomaly
         private static readonly int Close = Animator.StringToHash("Close");
         private static readonly int Open = Animator.StringToHash("Open");
 
+        [SerializeField] 
+        private AudioClip openSFX;
+        [SerializeField] 
+        private AudioClip closeSFX;
+        
         private void Awake()
         {
             if (animator == null)
@@ -24,13 +29,23 @@ namespace Anomaly
         public void OpenDoor()
         {
             Debug.Log("문 열기");
-            // animator.SetTrigger(Open);
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("door_open"))
+            {
+                return;
+            }
+            animator.SetTrigger(Open);
+            SoundManager.Instance.PlaySFX(openSFX);
         }
 
         public void CloseDoor()
         {
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("door_close"))
+            {
+                return;
+            }
             Debug.Log("문 닫기");
-            // animator.SetTrigger(Close);
+            animator.SetTrigger(Close);
+            SoundManager.Instance.PlaySFX(closeSFX);
         }
     }
 

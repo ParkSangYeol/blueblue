@@ -18,11 +18,12 @@ namespace Anomaly
         public GameObject defaultPrefab;
         public List<AnomalyScriptableObject> problems;
         
+#if UNITY_EDITOR
         [Button]
         public void MakeProblemsList()
         {
             problems = new List<AnomalyScriptableObject>();
-            string[] guids = AssetDatabase.FindAssets("t:ProblemScriptableObject");
+            string[] guids = AssetDatabase.FindAssets("t:AnomalyScriptableObject");
             foreach (var guid in guids)
             {
                 string path = AssetDatabase.GUIDToAssetPath(guid);
@@ -33,5 +34,6 @@ namespace Anomaly
                 }
             }
         }
+#endif
     }
 }

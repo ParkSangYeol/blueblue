@@ -395,7 +395,9 @@ GameObject:
   - component: {fileID: 8602390575076647601}
   - component: {fileID: 2947241243024974730}
   - component: {fileID: 7232587988138323812}
-  m_Layer: 0
+  - component: {fileID: 4053502404644449019}
+  - component: {fileID: 5645433584348338946}
+  m_Layer: 6
   m_Name: SM_Bed_Matress_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -483,8 +485,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2035161930986734164
-Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -17119,6 +17119,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 5083378073458387728}
+    - targetCorrespondingSourceObject: {fileID: 1674690011556694933, guid: 946aa73837f53c544bda2fedab1e7eca,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8060511323870613481}
   m_SourcePrefab: {fileID: 100100000, guid: 946aa73837f53c544bda2fedab1e7eca, type: 3}
 --- !u!1 &7706127269627053820 stripped
 GameObject:
@@ -17148,6 +17152,21 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 3423958390658300022, guid: 5e2864f849e4a8741b8f204863f1b7df, type: 3}
+--- !u!114 &8060511323870613481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7706127269627053820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc3a7a7b4e4e5594c89e1324297dad9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footStepSFXs:
+  - {fileID: 8300000, guid: 97fec5b89d520ee44b3176cb822c17d9, type: 3}
+  - {fileID: 8300000, guid: 7104a8c83f808cd4da60083a816f8fd4, type: 3}
 --- !u!4 &7841782887424452993 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1233849546560431336, guid: 946aa73837f53c544bda2fedab1e7eca,
