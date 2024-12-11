@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: WindowOpenging-CH2
   m_EditorClassIdentifier: 
   type: 4
-  problemPrefab: {fileID: 4769712712013771419, guid: 5e28da7bcea10684cace0b421f071494,
+  problemPrefab: {fileID: 3748434333406073586, guid: 916427696072cdf45a67898b65a503c6,
     type: 3}
