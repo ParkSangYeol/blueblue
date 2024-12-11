@@ -11,8 +11,14 @@ namespace Anomaly.Object
     {
         [SerializeField]
         private DOTweenAnimation animation;
+        
+        [SerializeField] 
+        private SFXPlayer sfxPlayer;
+        
+        [SerializeField] 
+        private AudioClip openingSFX;
 
-        public UnityEvent OnWindowOpening; 
+        public UnityEvent OnWindowOpening;
 
         private void Awake()
         {
@@ -22,6 +28,15 @@ namespace Anomaly.Object
             }
         }
 
+        private void Start()
+        {
+            OnWindowOpening.AddListener(() =>
+            {
+                SoundManager.Instance.PlaySFX(sfxPlayer, openingSFX);
+            });
+            base.Start();
+        }
+        
         protected override void ActivePhenomenon()
         {
             animation.DORestart();
