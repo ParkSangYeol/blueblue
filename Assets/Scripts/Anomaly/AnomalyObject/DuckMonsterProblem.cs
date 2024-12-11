@@ -3,10 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using DG.Tweening;
+using PlayerControl;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 namespace Anomaly.Object
 {
@@ -25,10 +27,16 @@ namespace Anomaly.Object
         private Camera mainCamera;
         
         [SerializeField] 
-        private SFXPlayer sfxPlayer;
+        private SFXPlayer screamSFXPlayer;
+        
+        [SerializeField] 
+        private SFXPlayer duckSfxPlayer;
         
         [SerializeField] 
         private AudioClip screamSFX;
+
+        [SerializeField] 
+        private AudioClip duckSFX;
 
         [SerializeField] 
         private GameObject blackScreen;
@@ -58,6 +66,7 @@ namespace Anomaly.Object
             }
 
             cvc = playerTransform.GetComponentInChildren<CinemachineVirtualCamera>();
+            SoundManager.Instance.PlaySFX(duckSfxPlayer, duckSFX, true);
             base.Start();
         }
         
@@ -97,8 +106,13 @@ namespace Anomaly.Object
         IEnumerator JumpScare()
         {
             Debug.Log("Call");
-            // TODO 플레이어 이동 제한 및 카메라 움직임 제한시키기
-            // TODO 게임 내 모든 조명 비활성화하기
+            // 오리 소리 제거
+            duckSfxPlayer.Stop();
+            
+            // 플레이어 이동 제한 및 카메라 움직임 제한시키기
+            playerTransform.GetComponent<JumpScareTriggered>().WhenJumpScareTriggered();
+            yield return null;
+            
             // 괴물 오리 오브젝트 이동
             jumpScareDuck.transform.position = playerTransform.position + new Vector3(0, 2f, 0) + playerTransform.forward * 0.26f;
             jumpScareDuck.transform.rotation = mainCamera.transform.rotation;
@@ -123,11 +137,15 @@ namespace Anomaly.Object
             noise.m_FrequencyGain = 1;
             
             // SFX 출력
-            SoundManager.Instance.PlaySFX(sfxPlayer, screamSFX, false);
+            SoundManager.Instance.PlaySFX(screamSFXPlayer, screamSFX, false);
             
             // 암전 게임 오버 연출 진행.
             yield return new WaitForSeconds(1.6f);
             blackScreen.SetActive(true);
+
+            // 암전 이후 게임 재시작
+            yield return new WaitForSeconds(1f);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }
