@@ -27,20 +27,10 @@ namespace Anomaly.Object
                 Debug.LogError("창문 DOTween Animation이 지정되지 않았습니다.");
             }
         }
-
-        private void Start()
-        {
-            OnWindowOpening.AddListener(() =>
-            {
-                SoundManager.Instance.PlaySFX(sfxPlayer, openingSFX);
-            });
-            base.Start();
-        }
         
         protected override void ActivePhenomenon()
         {
-            animation.DORestart();
-            OnWindowOpening.Invoke();
+            StartCoroutine(OpenWindow());
         }
 
         public override void ResetProblem()
@@ -48,6 +38,12 @@ namespace Anomaly.Object
             animation.DORewind();
         }
 
+        IEnumerator OpenWindow()
+        {
+            SoundManager.Instance.PlaySFX(sfxPlayer, openingSFX);
+            yield return new WaitForSeconds(0.1f);
+            animation.DORestart();
+        }
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Player"))
