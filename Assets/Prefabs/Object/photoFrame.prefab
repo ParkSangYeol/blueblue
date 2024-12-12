@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &1638507086511533203
+--- !u!1001 &433934012125682273
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -36,12 +36,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: e717d6a224d67204aa73b5180ec85456,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e717d6a224d67204aa73b5180ec85456,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e717d6a224d67204aa73b5180ec85456,
         type: 3}
@@ -62,17 +62,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ecc9a94e9e4e7a54f97e7cc00e873fcf, type: 2}
+      objectReference: {fileID: 2100000, guid: fb81291ff1d7af04c9f8c32bf71790b3, type: 2}
     - target: {fileID: 919132149155446097, guid: e717d6a224d67204aa73b5180ec85456,
         type: 3}
       propertyPath: m_Name
       value: photoFrame
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e717d6a224d67204aa73b5180ec85456,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7373501829362074560, guid: e717d6a224d67204aa73b5180ec85456,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: b36b299dfaf44234cada95da03598141, type: 2}
+      objectReference: {fileID: 2100000, guid: f07d429c1ba396b41a2dea60343fb79e, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
