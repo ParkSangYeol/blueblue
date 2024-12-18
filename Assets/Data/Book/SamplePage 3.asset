@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38f203724ba6357488c4885f3259eb57, type: 3}
-  m_Name: ToyChange
+  m_Script: {fileID: 11500000, guid: c242a09d463614a41b3e44a4aaa2e27d, type: 3}
+  m_Name: SamplePage 3
   m_EditorClassIdentifier: 
-  type: 2
-  anomalyName: ToyChange
-  problemPrefab: {fileID: 8036267768389104041, guid: 14f5c4733594a3445939a0ef0ec302c3,
-    type: 3}
+  anomalyType: 2
+  anomalyName: ToyTrack
+  photo: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  description: sample3

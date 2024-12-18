@@ -12,6 +12,7 @@ namespace Anomaly
     {
         [EnumToggleButtons, HideLabel]
         public AnomalyType type;
+        public string anomalyName;
         [AssetsOnly]
         public GameObject problemPrefab;
     }
