@@ -26,6 +26,8 @@ namespace Anomaly
         private bool isLoadNewMap = false;
         private BalancedRandomSelector<int> randomSelector;
 
+        [SerializeField]
+        private AnomalyClearDataHandler anomalyDataHandler;
         public UnityEvent onClearGame;
         public UnityEvent onFailGame;
 
@@ -76,6 +78,7 @@ namespace Anomaly
                 if (currentMapIdx != -1)
                 {
                     randomSelector.RemoveRandomItem();
+                    anomalyDataHandler.CheckAnomaly(stages[stageIdx].problems[currentMapIdx].anomalyName);
                 }
                 if (++stageFloor == stageThreshold)
                 {
