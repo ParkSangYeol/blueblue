@@ -24,6 +24,7 @@ namespace System.Interaction
         [SerializeField] 
         private LayerMask interactionLayer;
         private IInteractable currentInteractable;
+        private IInteractable selectInteractable;
 
         [SerializeField] 
         private Image hoverImage;
@@ -75,11 +76,6 @@ namespace System.Interaction
         /// </summary>
         private void GetInteractableObject()
         {
-            if (currentInteractable != null)
-            {
-                StopInteract();
-            }
-            
             // lay를 쏴서 currentInteractable 객체 가져오기.
             RaycastHit hit;
             Vector3 screenCenter = Cursor.lockState == CursorLockMode.Locked
@@ -98,21 +94,24 @@ namespace System.Interaction
             {
                 return;
             }
-            
+
+            selectInteractable?.StopInteract();
+
             currentInteractable.StartInteract();
+            selectInteractable = currentInteractable;
             onStartInteracting.Invoke();
         }
         
         private void StopInteract()
         {
-            if (currentInteractable == null)
+            if (selectInteractable == null)
             {
                 return;
             }
             
-            currentInteractable.StopInteract();
+            selectInteractable.StopInteract();
             onStopInteracting.Invoke();
-            currentInteractable = null;
+            selectInteractable = null;
         }
 
         #endregion
