@@ -76,7 +76,7 @@ PrefabInstance:
     - target: {fileID: 8241887383551660762, guid: 99f8fe26392c4a64ba4ff2c08db496ae,
         type: 3}
       propertyPath: m_Name
-      value: DefaultMap Variant
+      value: PhotoframeChange_Divorce
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

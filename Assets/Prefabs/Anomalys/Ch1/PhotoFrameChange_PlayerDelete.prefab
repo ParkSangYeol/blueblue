@@ -135,7 +135,7 @@ PrefabInstance:
     - target: {fileID: 7274315539320045932, guid: 28042b17a27cd7c469f2478b1203bdb0,
         type: 3}
       propertyPath: m_Name
-      value: DefaultMap Variant
+      value: PhotoFrameChange_PlayerDelete
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
