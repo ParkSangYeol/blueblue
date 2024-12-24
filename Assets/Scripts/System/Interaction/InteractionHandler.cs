@@ -23,6 +23,7 @@ namespace System.Interaction
         private KeyCode stopInteractKeyCode;
         [SerializeField] 
         private LayerMask interactionLayer;
+        [ShowInInspector]
         private IInteractable currentInteractable;
         private IInteractable selectInteractable;
 
@@ -85,6 +86,10 @@ namespace System.Interaction
             if (Physics.Raycast(ray, out hit, interactDistance, interactionLayer))
             {
                 currentInteractable = hit.transform.GetComponent<IInteractable>();
+            }
+            else
+            {
+                currentInteractable = null;
             }
         }
 
