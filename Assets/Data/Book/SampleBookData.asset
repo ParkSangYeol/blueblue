@@ -1,0 +1,118 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d4e1db63edd12c48a2654dbebea2dff, type: 3}
+  m_Name: SampleBookData
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: dad097118f5a0984ead61c55f5890c5b, type: 2}
+    - {fileID: 11400000, guid: 301f322f3df243d4f9604a4f3131ac8a, type: 2}
+    - {fileID: 11400000, guid: 56d05273e6d0f3545bd5832ce2b1f0ab, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: pages
+      Entry: 7
+      Data: 0|System.Collections.Generic.SortedDictionary`2[[Anomaly.AnomalyType,
+        Assembly-CSharp],[System.Collections.Generic.List`1[[Book.PageScriptableObject,
+        Assembly-CSharp]], mscorlib]], System
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: System.Collections.Generic.KeyValuePair`2[[Anomaly.AnomalyType, Assembly-CSharp],[System.Collections.Generic.List`1[[Book.PageScriptableObject,
+        Assembly-CSharp]], mscorlib]], mscorlib
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 1|System.Collections.Generic.List`1[[Book.PageScriptableObject, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: System.Collections.Generic.KeyValuePair`2[[Anomaly.AnomalyType, Assembly-CSharp],[System.Collections.Generic.List`1[[Book.PageScriptableObject,
+        Assembly-CSharp]], mscorlib]], mscorlib
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 2|System.Collections.Generic.List`1[[Book.PageScriptableObject, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: System.Collections.Generic.KeyValuePair`2[[Anomaly.AnomalyType, Assembly-CSharp],[System.Collections.Generic.List`1[[Book.PageScriptableObject,
+        Assembly-CSharp]], mscorlib]], mscorlib
+    - Name: 
+      Entry: 3
+      Data: 8
+    - Name: 
+      Entry: 7
+      Data: 3|System.Collections.Generic.List`1[[Book.PageScriptableObject, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 10
+      Data: 2
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 

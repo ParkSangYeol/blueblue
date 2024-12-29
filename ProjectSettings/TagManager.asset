@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ground
+  - Ball
+  - Volume
   layers:
   - Default
   - TransparentFX
@@ -15,13 +18,13 @@ TagManager:
   - 
   - Post-Processing Volume
   - 
+  - Interactable
   - 
   - 
   - 
   - 
   - 
-  - 
-  - 
+  - Player
   - 
   - 
   - 
