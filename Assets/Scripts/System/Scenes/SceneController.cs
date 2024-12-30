@@ -16,6 +16,10 @@ namespace System.Scenes
             loader.SetAnomaly(0);
         }
 
+        /// <summary>
+        /// 게임 오버시 호출
+        /// </summary>
+        /// <param name="idx">챕터 번호 아님. 챕터 번호 -1 해서 쓰기. (예를들어 1챕터면 0)</param>
         [Button]
         public void ResetScene(int idx)
         { 
