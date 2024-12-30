@@ -9,7 +9,7 @@ namespace Book
     public class PageScriptableObject : ScriptableObject
     {
         public AnomalyType anomalyType;
-        public string anomalyName;
+        public AnomalyScriptableObject anomalyData;
         public Sprite photo;
         public string description;
     }
