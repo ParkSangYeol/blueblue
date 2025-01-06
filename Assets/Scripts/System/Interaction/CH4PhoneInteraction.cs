@@ -15,6 +15,7 @@ namespace System.Interaction
 
         public GameObject blackSurface;
         public GameObject phonecallSurface;
+        public GameObject phoneNormalSurface;
 
         public SFXPlayer sfxPlayer;
         public void StartInteract()
@@ -43,6 +44,8 @@ namespace System.Interaction
             yield return new WaitForSeconds(daugterTime);
             SoundManager.Instance.PlaySFX(sfxPlayer, wife, false);
             yield return new WaitForSeconds(wifeTime + 0.2f);
+            phoneNormalSurface.SetActive(true);
+            yield return new WaitForSeconds(0.4f);
             blackSurface.SetActive(true);
         }
     }

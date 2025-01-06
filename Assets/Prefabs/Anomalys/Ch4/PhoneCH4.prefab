@@ -68,6 +68,11 @@ PrefabInstance:
       propertyPath: daughter
       value: 
       objectReference: {fileID: 8300000, guid: 436aff7a7852faa4d91d3ad376107411, type: 3}
+    - target: {fileID: 5068858093839786641, guid: 80d8f7e7b43534b32916a2583ad4b309,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6697225037527005882, guid: 80d8f7e7b43534b32916a2583ad4b309,
         type: 3}
       propertyPath: m_Size.x
@@ -82,6 +87,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.z
       value: 0.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177129381760732071, guid: 80d8f7e7b43534b32916a2583ad4b309,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8241887383551660762, guid: 80d8f7e7b43534b32916a2583ad4b309,
         type: 3}
