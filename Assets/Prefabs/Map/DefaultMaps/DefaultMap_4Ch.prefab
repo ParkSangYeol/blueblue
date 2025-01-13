@@ -8073,6 +8073,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 80712436881924944}
     m_Modifications:
+    - target: {fileID: 2528129308397804941, guid: f26ca7b2238e0d94399565e3609b0acd,
+        type: 3}
+      propertyPath: anomalyType
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 2725764715615330391, guid: f26ca7b2238e0d94399565e3609b0acd,
         type: 3}
       propertyPath: m_LocalScale.x

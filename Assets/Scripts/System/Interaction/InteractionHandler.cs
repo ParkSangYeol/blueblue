@@ -58,6 +58,11 @@ namespace System.Interaction
 
         private void Update()
         {
+            if (Input.GetKeyDown(stopInteractKeyCode))
+            {
+                StopInteract();
+            }
+         
             GetInteractableObject();
             if (currentInteractable != null)
             {
@@ -65,10 +70,6 @@ namespace System.Interaction
                 if (Input.GetKeyDown(startInteractKeyCode))
                 {
                     StartInteract();
-                }
-                else if (Input.GetKeyDown(stopInteractKeyCode))
-                {
-                    StopInteract();
                 }
             }
             else
